@@ -1,0 +1,32 @@
+.Footer {
+  width: 100%;
+  height: $Footer__height;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Chevron {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  color: #fff;
+  font-size: 22px;
+  &:hover {
+    color: $LightGrey;
+  }
+  .Chevron__image {
+    width: 40px;
+  }
+}
+
+.Chevron__left {
+  padding-left: 50px;
+}
+
+.Chevron__right {
+  margin-left: auto;
+  padding-right: 50px;
+}

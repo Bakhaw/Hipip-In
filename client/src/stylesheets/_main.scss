@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@font-face {
+  font-family: 'Futura Std Heavy';
+  src: url('/src/assets/fonts/FuturaStd-Heavy') format('otf');
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: $Futura;
+  background-color: $DarkGrey;
+}

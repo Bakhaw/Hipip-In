@@ -1,0 +1,22 @@
+.Login {
+  text-align: center;
+  padding-bottom: 20px;
+  button {
+    margin: 20px 0;
+  }
+  .LoginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .Login__create-account {
+    margin: 0;
+    color: #fff;
+    font-size: 30px;
+    width: 100%;
+    .Login__create-account__button {
+      color: $BlueGreen;
+    }
+  }
+}

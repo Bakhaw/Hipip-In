@@ -1,0 +1,24 @@
+.Container {
+  min-height: $Container__height;
+  .Container__title {
+    color: #fff;
+    margin: 10px 0;
+    font-size: 45px;
+    font-family: $Pacifico;
+    font-weight: normal;
+    text-align: center;
+  }
+  .Container__children {
+    width: $Layout__width__XLG;
+    margin: auto;
+    @include xs {
+      width: $Layout__width__XS;
+    }
+    @include sm {
+      width: $Layout__width__SM;
+    }
+    @include md {
+      width: $Layout__width__MD;
+    }
+  }
+}

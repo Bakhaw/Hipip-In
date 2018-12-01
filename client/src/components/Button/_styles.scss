@@ -1,0 +1,28 @@
+.Button {
+  cursor: pointer;
+  * {
+    cursor: pointer;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+  background: $LightGrey;
+  border: none;
+  border-radius: 50px;
+  .Button__text {
+    color: $DarkGrey;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    flex: 1;
+    &::before {
+      content: '';
+      flex: 1;
+    }
+  }
+  .Button__double-chevron-right {
+    height: 30px;
+  }
+}

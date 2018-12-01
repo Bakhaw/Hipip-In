@@ -1,0 +1,24 @@
+.Avatar {
+  .Avatar__image {
+    border: 10px solid transparent;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+  }
+  .Avatar__text {
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+  }
+}
+
+.Avatar__active {
+  .Avatar__image {
+    border: 10px solid $BlueGreen;
+  }
+  .Avatar__text {
+    color: $BlueGreen;
+  }
+}
