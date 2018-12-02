@@ -1,5 +1,7 @@
 .Container {
   min-height: $Container__height;
+  display: flex;
+  flex-direction: column;
   .Container__title {
     color: #fff;
     margin: 10px 0;

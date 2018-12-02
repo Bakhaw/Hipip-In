@@ -1,0 +1,40 @@
+.SelectActivity {
+  .SelectActivity__Activities {
+    padding: 20px 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .SelectActivity__Activity {
+      cursor: pointer;
+      margin: 10px 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .SelectActivity__Activity__image {
+        border: 10px solid transparent;
+        width: 80px;
+      }
+      .SelectActivity__Activity__text {
+        color: $DarkGrey;
+        font-size: 25px;
+        margin-left: 15px;
+        width: 50%;
+      }
+    }
+    .SelectActivity__Activity__active {
+      .SelectActivity__Activity__image {
+        border-radius: 50%;
+        border: 10px solid $BlueGreen;
+      }
+      .SelectActivity__Activity__text {
+        color: $BlueGreen;
+      }
+    }
+  }
+}
+
+.SelectMode button {
+  margin: 20px 0;
+}
