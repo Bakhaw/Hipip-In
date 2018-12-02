@@ -1,4 +1,7 @@
 .Button {
+  &:hover {
+    background: $BlueGreen;
+  }
   cursor: pointer;
   * {
     cursor: pointer;

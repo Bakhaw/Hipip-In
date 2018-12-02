@@ -1,3 +1,19 @@
+.AvatarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #fff;
+  padding: 10px;
+  height: 80px;
+  img {
+    margin-top: 20px;
+  }
+  .AvatarHeader__logo {
+    height: 80px;
+    margin: 0;
+  }
+}
+
 .Header {
   background: #fff;
   padding: 10px 0;

@@ -14,6 +14,7 @@
     // ? STEP 2
     padding: 20px 0;
     margin: auto;
+    margin-bottom: 20px;
     width: $Layout__width__XLG;
     background: #fff;
     display: grid;
@@ -58,12 +59,8 @@
   .RegisterDone {
     // ? STEP 3
     text-align: center;
-    border: 2px solid red;
-    img {
-      // ? Remove le { cursor: pointer } sur l'Avatar
-      cursor: unset;
-    }
-    .RegisterDone__title  {
+    .RegisterDone__title {
+      color: #fff;
     }
     .RegisterDone__text-confirmation {
       font-size: 30px;

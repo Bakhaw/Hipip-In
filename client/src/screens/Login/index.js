@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import Container from '../../components/Container';
 import LoginForm from './LoginForm';
 
-function Login() {
+function Login({ history }) {
   return (
     <Container headerTitle='Connexion'>
       <div className='Login'>
-        <LoginForm />
+        <LoginForm history={history} />
         <p className='Login__create-account'>
           Pas encore inscrit ?{' '}
           <Link className='Login__create-account__button' to='/register'>

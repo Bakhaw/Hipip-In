@@ -12,13 +12,17 @@
     color: #fff;
     text-transform: uppercase;
   }
+  .Avatar__small {
+    height: 100px;
+    width: 100px;
+  }
 }
 
 .Avatar__active {
   .Avatar__image {
-    border: 10px solid $BlueGreen;
+    border: 10px solid $Purple;
   }
   .Avatar__text {
-    color: $BlueGreen;
+    color: $Purple;
   }
 }

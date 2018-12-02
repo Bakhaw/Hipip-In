@@ -1,8 +1,13 @@
 import React from 'react';
+import { AppStateProvider } from './context';
 import Router from './Router';
 
 function App() {
-  return <Router />;
+  return (
+    <AppStateProvider>
+      <Router />
+    </AppStateProvider>
+  );
 }
 
 export default App;

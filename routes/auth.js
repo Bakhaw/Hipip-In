@@ -43,7 +43,7 @@ router.post(
     failureRedirect: '/'
   }),
   (req, res) => {
-    res.json(req.user).redirect('/');
+    return res.redirect('/');
   }
 );
 

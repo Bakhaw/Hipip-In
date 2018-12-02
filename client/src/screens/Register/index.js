@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
@@ -52,11 +52,14 @@ class Register extends Component {
 
   render() {
     const { currentStep, form, totalSteps } = this.state;
+    const { history } = this.props;
     return (
-      <>
+      <Fragment>
         <Container
+          avatarType={form.genre}
           headerTitle='Inscription'
           sectionTitle={currentStep === 2 ? "Centres d'intérêts" : ''}
+          showAvatarHeader={currentStep === 3}
         >
           <div className='Register'>
             {currentStep === 1 && (
@@ -72,7 +75,9 @@ class Register extends Component {
                 goToRegisterDone={this.goToRegisterDone}
               />
             )}
-            {currentStep === 3 && <RegisterDone form={form} />}
+            {currentStep === 3 && (
+              <RegisterDone form={form} history={history} />
+            )}
           </div>
         </Container>
         <Footer
@@ -81,7 +86,7 @@ class Register extends Component {
           nextStep={this.nextStep}
           prevStep={this.prevStep}
         />
-      </>
+      </Fragment>
     );
   }
 }

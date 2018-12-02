@@ -14,9 +14,6 @@
   width: 100px;
   color: #fff;
   font-size: 22px;
-  &:hover {
-    color: $LightGrey;
-  }
   .Chevron__image {
     width: 40px;
   }
@@ -24,9 +21,15 @@
 
 .Chevron__left {
   padding-left: 50px;
+  &:hover {
+    color: $Purple;
+  }
 }
 
 .Chevron__right {
   margin-left: auto;
   padding-right: 50px;
+  &:hover {
+    color: $BlueGreen;
+  }
 }
