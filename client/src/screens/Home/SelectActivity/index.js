@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-
-const baseImgPath = 'src/assets/images/activities';
+import React, { Component } from "react";
+const baseImgPath = "src/assets/images/activities";
 
 const Activities = [
   {
@@ -9,17 +8,17 @@ const Activities = [
   },
   {
     image: `${baseImgPath}/cafe.png`,
-    text: 'Prendre un café'
+    text: "Prendre un café"
   },
   {
     image: `${baseImgPath}/dej.png`,
-    text: 'Pause déjeuner'
+    text: "Pause déjeuner"
   }
 ];
 
 class SelectActivity extends Component {
   state = {
-    selectedActivity: ''
+    selectedActivity: ""
   };
 
   selectActivity = activity => {
@@ -29,26 +28,26 @@ class SelectActivity extends Component {
   render() {
     const { selectedActivity } = this.state;
     return (
-      <div className='SelectActivity'>
-        <div className='SelectActivity__Activities'>
+      <div className="SelectActivity">
+        <div className="SelectActivity__Activities">
           {Activities.map((activity, index) => {
             const { image, text } = activity;
             return (
               <div
                 className={`SelectActivity__Activity ${
                   selectedActivity === text
-                    ? 'SelectActivity__Activity__active'
-                    : ''
+                    ? "SelectActivity__Activity__active"
+                    : ""
                 }`}
                 key={index}
                 onClick={() => this.selectActivity(activity)}
               >
                 <img
                   alt={`Icône ${text}`}
-                  className='SelectActivity__Activity__image'
+                  className="SelectActivity__Activity__image"
                   src={image}
                 />
-                <p className='SelectActivity__Activity__text'>{text}</p>
+                <p className="SelectActivity__Activity__text">{text}</p>
               </div>
             );
           })}

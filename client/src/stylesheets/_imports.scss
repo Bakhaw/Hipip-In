@@ -5,9 +5,10 @@
 @import '../components/Footer/styles';
 @import '../components/Header/styles';
 @import '../components/Input/styles';
+@import '../components/ItemsContainer/styles';
 @import '../components/Spinner/styles';
 
 // ? Screens
-@import '../screens/Home/styles';
-@import '../screens/Login/styles';
-@import '../screens/Register/styles';
+@import '../screens/Home/index';
+@import '../screens/Login/index';
+@import '../screens/Register/index';

@@ -4,7 +4,14 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon server.js --exec babel-node --presets env"
+    "precommit": "lint-staged",
+    "dev": "nodemon --ignore client/ --exec babel-node --presets env server.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -12,6 +19,8 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
     "mongoose": "^5.0.11",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"

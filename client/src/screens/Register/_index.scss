@@ -1,0 +1,8 @@
+@import './RegisterForm/RegisterForm'; // ? Step 0
+@import './RegisterHobbies/RegisterHobbies'; // ? Step 1
+@import './RegisterDone/RegisterDone'; // ? Step 2
+
+.Register {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,29 +1,29 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
-import Button from '../../components/Button';
-import Input from '../../components/Input';
-import Spinner from '../../components/Spinner';
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
+import Spinner from "../../../components/Spinner";
 
-import { withContext } from '../../context';
+import { withContext } from "../../../context";
 
 const LoginFormFields = [
   {
-    label: 'Email',
-    name: 'email',
-    type: 'email'
+    label: "Email",
+    name: "email",
+    type: "email"
   },
   {
-    label: 'Mot de passe',
-    name: 'password',
-    type: 'password'
+    label: "Mot de passe",
+    name: "password",
+    type: "password"
   }
 ];
 
 class LoginForm extends Component {
   state = {
-    email: '',
-    password: ''
+    email: "",
+    password: ""
   };
 
   handleInputChange = e => {
@@ -37,17 +37,17 @@ class LoginForm extends Component {
     } = this.props;
     const { email, password } = this.state;
     const params = new URLSearchParams();
-    params.append('email', email);
-    params.append('password', password);
+    params.append("email", email);
+    params.append("password", password);
 
     await toggleAppLoading(true);
 
     await axios({
-      method: 'post',
+      method: "post",
       data: params,
-      url: '/auth/login'
+      url: "/auth/login"
     })
-      .then(res => history.replace('/'))
+      .then(res => history.replace("/"))
       .catch(err => console.log(err));
 
     await toggleAppLoading(false);
@@ -59,7 +59,7 @@ class LoginForm extends Component {
     if (isAppLoading) return <Spinner />;
 
     return (
-      <div className='LoginForm'>
+      <div className="LoginsForm">
         {LoginFormFields.map((field, index) => {
           const { label, name, type } = field;
           return (
@@ -73,7 +73,7 @@ class LoginForm extends Component {
             />
           );
         })}
-        <Button onClick={this.logIn} text='Se connecter' />
+        <Button onClick={this.logIn} text="Se connecter" />
       </div>
     );
   }

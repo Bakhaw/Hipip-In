@@ -1,22 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment } from "react";
 
-import Container from '../../components/Container';
-import LoginForm from './LoginForm';
+import Container from "../../components/Container";
+import CreateAccountButton from "./CreateAccountButton";
+import LoginForm from "./LoginForm";
 
 function Login({ history }) {
   return (
-    <Container headerTitle='Connexion'>
-      <div className='Login'>
-        <LoginForm history={history} />
-        <p className='Login__create-account'>
-          Pas encore inscrit ?{' '}
-          <Link className='Login__create-account__button' to='/register'>
-            Créer un compte
-          </Link>
-        </p>
-      </div>
-    </Container>
+    <Fragment>
+      <Container headerTitle="Connexion">
+        <div className="Login">
+          <LoginForm history={history} />
+        </div>
+      </Container>
+      <CreateAccountButton />
+    </Fragment>
   );
 }
 

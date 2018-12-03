@@ -12,7 +12,7 @@
   }
   .Container__children {
     width: $Layout__width__XLG;
-    margin: auto;
+    margin: 0 auto;
     @include xs {
       width: $Layout__width__XS;
     }

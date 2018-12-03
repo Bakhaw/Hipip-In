@@ -1,30 +1,31 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from "react";
 
-import Container from '../../components/Container';
-import Footer from '../../components/Footer';
-import SelectActivity from './SelectAtivity';
-import SelectMode from './SelectMode';
-import Spinner from '../../components/Spinner';
+import Container from "../../components/Container";
+import Footer from "../../components/Footer";
+import SelectActivity from "./SelectActivity";
+import SelectHour from "./SelectHour";
+import SelectMode from "./SelectMode";
+import Spinner from "../../components/Spinner";
 
-import { withContext } from '../../context';
-
-const StepsInfos = [
-  {
-    component: <SelectActivity />,
-    sectionTitle: 'Tu veux faire quoi ?'
-  },
-  {
-    component: <SelectMode />,
-    sectionTitle: 'Avec qui ?'
-  },
-  {
-    sectionTitle: 'Quand ?'
-  }
-];
+import { withContext } from "../../context";
 
 class Home extends Component {
   state = {
-    currentStep: 2
+    currentStep: 1,
+    StepsDetail: [
+      {
+        component: <SelectActivity />,
+        sectionTitle: "Tu veux faire quoi ?"
+      },
+      {
+        component: <SelectMode />,
+        sectionTitle: "Avec qui ?"
+      },
+      {
+        component: <SelectHour />,
+        sectionTitle: "Quand ?"
+      }
+    ]
   };
 
   async componentDidMount() {
@@ -33,7 +34,7 @@ class Home extends Component {
       const { isAppLoading, isUserLogged } = contextState;
 
       if (!isAppLoading && !isUserLogged) {
-        return history.push('/login');
+        return history.push("/login");
       }
     });
   }
@@ -55,7 +56,7 @@ class Home extends Component {
   };
 
   render() {
-    const { currentStep } = this.state;
+    const { currentStep, StepsDetail } = this.state;
     const { isAppLoading, isUserLogged, userLogged } = this.props.contextState;
 
     if (isAppLoading) return <Spinner />;
@@ -64,13 +65,13 @@ class Home extends Component {
       <Fragment>
         <Container
           avatarType={isUserLogged && userLogged.genre}
-          sectionTitle={StepsInfos[currentStep - 1].sectionTitle}
+          sectionTitle={StepsDetail[currentStep].sectionTitle}
           showAvatarHeader={true}
         >
-          {StepsInfos[currentStep - 1].component}
+          {StepsDetail[currentStep].component}
         </Container>
         <Footer
-          chevronLeft={currentStep > 1}
+          chevronLeft={currentStep > 0}
           chevronRight={currentStep !== 2}
           nextStep={this.nextStep}
           prevStep={this.prevStep}

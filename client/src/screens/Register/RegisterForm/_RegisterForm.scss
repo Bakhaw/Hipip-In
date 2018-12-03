@@ -1,0 +1,9 @@
+.RegisterForm {
+  // ? STEP 0
+  width: $Layout__width__XLG;
+  margin: auto;
+  .RegisterForm__avatars {
+    display: flex;
+    justify-content: space-between;
+  }
+}

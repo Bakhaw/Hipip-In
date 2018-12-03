@@ -1,0 +1,35 @@
+.ItemsContainer {
+  padding: 20px 0;
+  display: grid;
+  grid-gap: 20px 0;
+  justify-content: center;
+  grid-template-columns: repeat(3, 33.333%);
+  grid-auto-rows: 110px;
+  background: #fff;
+  // ? Height calcul
+  // ? grid-auto-rows: (110px * 2) + grid-gap: (10px * 3) * 60px more
+  // ? To show the start of next items so user knows he can scroll
+  max-height: 280px;
+  overflow-y: auto; // ? "auto" Hide the scrollbar if not needed
+  .Item {
+    text-align: center;
+    .Item__image {
+      cursor: pointer;
+      border: 10px solid transparent;
+      width: 80px;
+    }
+    .Item__text {
+      margin: 0;
+      color: $DarkGrey;
+    }
+  }
+  .Item__active {
+    .Item__image {
+      border: 10px solid $BlueGreen;
+      border-radius: 50%;
+    }
+    .Item__text {
+      color: $BlueGreen;
+    }
+  }
+}

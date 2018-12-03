@@ -1,0 +1,15 @@
+.ModeHeader {
+  display: flex;
+  align-items: center;
+  .ModeHeader__image {
+    width: 30px;
+    height: 30px;
+  }
+  .ModeHeader__text {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+}
