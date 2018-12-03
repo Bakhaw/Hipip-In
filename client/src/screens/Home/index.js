@@ -2,31 +2,79 @@ import React, { Component, Fragment } from "react";
 
 import Container from "../../components/Container";
 import Footer from "../../components/Footer";
+import Random from "./SelectMode/Random";
 import SelectActivity from "./SelectActivity";
 import SelectHour from "./SelectHour";
 import SelectMode from "./SelectMode";
+import SelectPersons from "./SelectMode/SelectPersons";
 import Spinner from "../../components/Spinner";
+
+import StepDetail from "./StepDetail";
+// * [ PARAMETERS ], EXAMPLE:
+// ? StepDetail(
+// ? component
+// ? chevronRight
+// ? chevronLeft
+// ? nextStep
+// ? prevStep
+// ? sectionTitle
+// ? )
 
 import { withContext } from "../../context";
 
 class Home extends Component {
-  state = {
-    currentStep: 1,
-    StepsDetail: [
-      {
-        component: <SelectActivity />,
-        sectionTitle: "Tu veux faire quoi ?"
-      },
-      {
-        component: <SelectMode />,
-        sectionTitle: "Avec qui ?"
-      },
-      {
-        component: <SelectHour />,
-        sectionTitle: "Quand ?"
-      }
-    ]
-  };
+  constructor() {
+    super();
+    this.state = {
+      currentStep: 0,
+      selectedMode: "",
+      StepsDetail: [
+        StepDetail(
+          <SelectActivity />, // ? component
+          true, // ? chevronRight
+          false, // ? chevronLeft
+          this.nextStep, // ? nextStep
+          null, // ? prevStep
+          "Tu veux faire quoi ?" // ? sectionTitle
+        ),
+        StepDetail(
+          <SelectMode
+            goToRandomStep={this.goToRandomStep}
+            goToSelectPersonsStep={this.goToSelectPersonsStep}
+          />,
+          false,
+          true,
+          null,
+          this.prevStep,
+          "Avec qui ?"
+        ),
+        StepDetail(
+          <Random />,
+          true,
+          true,
+          this.goToSelectHour,
+          this.prevStep,
+          ""
+        ),
+        StepDetail(
+          <SelectPersons />,
+          true,
+          true,
+          this.nextStep,
+          this.goToSelectMode,
+          ""
+        ),
+        StepDetail(
+          <SelectHour />,
+          false,
+          true,
+          null,
+          this.goToSelectMode,
+          "Quand ?"
+        )
+      ]
+    };
+  }
 
   async componentDidMount() {
     await this.getUserOnMount().then(() => {
@@ -55,9 +103,26 @@ class Home extends Component {
     this.setState(state => ({ currentStep: state.currentStep - 1 }));
   };
 
+  goToSelectMode = () => {
+    this.setState({ currentStep: 1 });
+  };
+
+  goToRandomStep = () => {
+    this.setState({ currentStep: 2 });
+  };
+
+  goToSelectPersonsStep = () => {
+    this.setState({ currentStep: 3 });
+  };
+
+  goToSelectHour = () => {
+    this.setState({ currentStep: 4 });
+  };
+
   render() {
     const { currentStep, StepsDetail } = this.state;
     const { isAppLoading, isUserLogged, userLogged } = this.props.contextState;
+    const { component, navigation, sectionTitle } = StepsDetail[currentStep];
 
     if (isAppLoading) return <Spinner />;
 
@@ -65,17 +130,12 @@ class Home extends Component {
       <Fragment>
         <Container
           avatarType={isUserLogged && userLogged.genre}
-          sectionTitle={StepsDetail[currentStep].sectionTitle}
+          sectionTitle={sectionTitle}
           showAvatarHeader={true}
         >
-          {StepsDetail[currentStep].component}
+          {component}
         </Container>
-        <Footer
-          chevronLeft={currentStep > 0}
-          chevronRight={currentStep !== 2}
-          nextStep={this.nextStep}
-          prevStep={this.prevStep}
-        />
+        <Footer {...navigation} />
       </Fragment>
     );
   }
