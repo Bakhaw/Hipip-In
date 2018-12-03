@@ -1,6 +1,6 @@
-import React from 'react';
-import { AppStateProvider } from './context';
-import Router from './Router';
+import React from "react";
+import { AppStateProvider } from "./context";
+import Router from "./Router";
 
 function App() {
   return (
