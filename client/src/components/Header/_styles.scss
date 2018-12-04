@@ -15,8 +15,8 @@
 }
 
 .Header {
-  background: #fff;
   padding: 10px 0;
+  background: #fff;
   text-align: center;
   .Header__logo {
     height: 60px;
@@ -25,7 +25,6 @@
     font-size: 40px;
     color: $DarkGrey;
     text-transform: uppercase;
-    margin: 0;
-    margin-top: 10px;
+    margin: 10px 0;
   }
 }

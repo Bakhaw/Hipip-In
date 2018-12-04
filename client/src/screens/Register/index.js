@@ -1,34 +1,13 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react';
 
-import Container from "../../components/Container";
-import Footer from "../../components/Footer";
-import RegisterDone from "./RegisterDone";
-import RegisterForm from "./RegisterForm";
-import RegisterHobbies from "./RegisterHobbies";
+import Container from '../../components/Container';
+import Footer from '../../components/Footer';
+import StepsDetails from './StepsDetails';
 
 class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentStep: 2,
-      StepsDetail: [
-        {
-          component: <RegisterForm />,
-          sectionTitle: "Infos persos"
-        },
-        {
-          component: (
-            <RegisterHobbies goToRegisterDone={this.goToRegisterDone} />
-          ),
-          sectionTitle: "Centres d'intérêts"
-        },
-        {
-          component: <RegisterDone history={props.history} />,
-          sectionTitle: "Bienvenue"
-        }
-      ]
-    };
-  }
+  state = {
+    currentStep: 0
+  };
 
   nextStep = () => {
     this.setState(state => ({ currentStep: state.currentStep + 1 }));
@@ -43,22 +22,20 @@ class Register extends Component {
   };
 
   render() {
-    const { currentStep, StepsDetail } = this.state;
+    const { currentStep } = this.state;
+    const { component, navigation, sectionTitle } = StepsDetails(this)[
+      currentStep
+    ];
     return (
       <Fragment>
         <Container
-          headerTitle="Inscription"
-          sectionTitle={StepsDetail[currentStep].sectionTitle}
+          headerTitle='Inscription'
+          sectionTitle={sectionTitle}
           showAvatarHeader={currentStep === 2}
         >
-          <div className="Register">{StepsDetail[currentStep].component}</div>
+          <div className='Register'>{component}</div>
         </Container>
-        <Footer
-          chevronLeft={currentStep >= 1 && currentStep < 2}
-          chevronRight={currentStep < 1}
-          nextStep={this.nextStep}
-          prevStep={this.prevStep}
-        />
+        <Footer {...navigation} />
       </Fragment>
     );
   }
