@@ -1,26 +1,26 @@
 const RegisterFormFields = [
   {
-    label: "Nom",
+    label: "Nom*",
     name: "lastname",
     type: "text"
   },
   {
-    label: "Prénom",
+    label: "Prénom*",
     name: "firstname",
     type: "text"
   },
   {
-    label: "Email",
+    label: "Email*",
     name: "email",
     type: "email"
   },
   {
-    label: "Mot de passe",
+    label: "Mot de passe*",
     name: "password",
     type: "password"
   },
   {
-    label: "Confimer le mot de passe",
+    label: "Confimer le mot de passe*",
     name: "confirmPassword",
     type: "password"
   }

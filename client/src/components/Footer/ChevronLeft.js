@@ -1,7 +1,7 @@
 import React from "react";
 import ChevronLeftIcon from "../../assets/images/layout/chevron-left.png";
 
-function ChevronLeft({ onClick }) {
+function ChevronLeft({ onClick, text }) {
   return (
     <div className="Chevron Chevron__left" onClick={onClick}>
       <img
@@ -9,7 +9,7 @@ function ChevronLeft({ onClick }) {
         className="Chevron__image"
         src={ChevronLeftIcon}
       />
-      <p>Précédent</p>
+      <p>{text || "Précédent"}</p>
     </div>
   );
 }

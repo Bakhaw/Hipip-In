@@ -1,8 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from "react";
 
-import Container from '../../components/Container';
-import Footer from '../../components/Footer';
-import StepsDetails from './StepsDetails';
+import Container from "../../components/Container";
+import Footer from "../../components/Footer";
+import StepsDetails from "./StepsDetails";
+
+import { RegisterProvider } from "../../context/Register";
 
 class Register extends Component {
   state = {
@@ -27,16 +29,18 @@ class Register extends Component {
       currentStep
     ];
     return (
-      <Fragment>
-        <Container
-          headerTitle='Inscription'
-          sectionTitle={sectionTitle}
-          showAvatarHeader={currentStep === 2}
-        >
-          <div className='Register'>{component}</div>
-        </Container>
-        <Footer {...navigation} />
-      </Fragment>
+      <RegisterProvider>
+        <Fragment>
+          <Container
+            headerTitle="Inscription"
+            sectionTitle={sectionTitle}
+            showAvatarHeader={currentStep === 2}
+          >
+            <div className="Register">{component}</div>
+          </Container>
+          <Footer {...navigation} />
+        </Fragment>
+      </RegisterProvider>
     );
   }
 }

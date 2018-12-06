@@ -1,78 +1,15 @@
-import React from "react";
+import React, { Fragment } from "react";
+
 import ModeHeader from "../ModeHeader";
 import ItemsContainer from "../../../../components/ItemsContainer";
-
-const baseImgPath = "src/assets/images/layout";
-
-const Persons = [
-  {
-    image: `${baseImgPath}/boy.png`,
-    text: "John"
-  },
-  {
-    image: `${baseImgPath}/girl.png`,
-    text: "Jane"
-  },
-  {
-    image: `${baseImgPath}/girl.png`,
-    text: "Mary"
-  },
-  {
-    image: `${baseImgPath}/boy.png`,
-    text: "Bob"
-  },
-  {
-    image: `${baseImgPath}/girl.png`,
-    text: "Ruby"
-  },
-  {
-    image: `${baseImgPath}/girl.png`,
-    text: "Mary"
-  },
-  {
-    image: `${baseImgPath}/boy.png`,
-    text: "Bob"
-  },
-  {
-    image: `${baseImgPath}/girl.png`,
-    text: "Ruby"
-  },
-  {
-    image: `${baseImgPath}/girl.png`,
-    text: "Mary"
-  },
-  {
-    image: `${baseImgPath}/boy.png`,
-    text: "Bob"
-  },
-  {
-    image: `${baseImgPath}/girl.png`,
-    text: "Ruby"
-  },
-  {
-    image: `${baseImgPath}/girl.png`,
-    text: "Mary"
-  },
-  {
-    image: `${baseImgPath}/boy.png`,
-    text: "Bob"
-  },
-  {
-    image: `${baseImgPath}/girl.png`,
-    text: "Ruby"
-  },
-  {
-    image: `${baseImgPath}/boy.png`,
-    text: "Franz"
-  }
-];
+import Persons from "./Persons";
 
 function SelectPersons() {
   return (
-    <div>
+    <Fragment>
       <ModeHeader mode="Je choisis" />
       <ItemsContainer items={Persons} />
-    </div>
+    </Fragment>
   );
 }
 

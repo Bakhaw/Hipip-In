@@ -1,16 +1,15 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from "react";
 
-import Container from '../../components/Container';
-import Footer from '../../components/Footer';
-import StepsDetails from './StepsDetails';
-import Spinner from '../../components/Spinner';
+import Container from "../../components/Container";
+import Footer from "../../components/Footer";
+import StepsDetails from "./StepsDetails";
+import Spinner from "../../components/Spinner";
 
-import { withContext } from '../../context';
+import { withContext } from "../../context";
 
 class Home extends Component {
   state = {
-    currentStep: 0,
-    selectedMode: ''
+    currentStep: 0
   };
 
   async componentDidMount() {
@@ -19,7 +18,7 @@ class Home extends Component {
       const { isAppLoading, isUserLogged } = contextState;
 
       if (!isAppLoading && !isUserLogged) {
-        return history.push('/login');
+        return history.push("/login");
       }
     });
   }

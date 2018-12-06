@@ -1,10 +1,12 @@
 import React from "react";
+
 import Button from "../../../components/Button";
+import Dropdown from "../../../components/Dropdown";
 
 function SelectHour() {
   return (
     <div className="SelectHour">
-      <p>Select Hour</p>
+      <Dropdown text="16:10" />
       <Button text="Valider" />
     </div>
   );

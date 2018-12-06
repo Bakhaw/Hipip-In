@@ -4,7 +4,7 @@
   align-items: flex-start;
   background: #fff;
   padding: 10px;
-  height: 80px;
+  height: $AvatarHeader__height;
   img {
     margin-top: 20px;
   }
@@ -18,6 +18,7 @@
   padding: 10px 0;
   background: #fff;
   text-align: center;
+  height: $Header__height;
   .Header__logo {
     height: 60px;
   }

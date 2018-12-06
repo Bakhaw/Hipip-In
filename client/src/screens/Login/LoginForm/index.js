@@ -23,7 +23,9 @@ const LoginFormFields = [
 class LoginForm extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    formError: false,
+    errorMessage: ""
   };
 
   handleInputChange = e => {
@@ -47,19 +49,30 @@ class LoginForm extends Component {
       data: params,
       url: "/auth/login"
     })
-      .then(res => history.replace("/"))
-      .catch(err => console.log(err));
+      .then(res => {
+        const { message, success } = res.data;
+        if (success) {
+          // ? Login successful, clear errors
+          this.setState({ formError: false, errorMessage: "" });
+          history.replace("/");
+        } else {
+          // ? Generate error
+          this.setState({ formError: true, errorMessage: message });
+        }
+      })
+      .catch(err => console.log("ERREUR", err.data));
 
     await toggleAppLoading(false);
   };
 
   render() {
+    const { errorMessage, formError } = this.state;
     const { isAppLoading } = this.props.contextState;
 
     if (isAppLoading) return <Spinner />;
 
     return (
-      <div className="LoginsForm">
+      <div>
         {LoginFormFields.map((field, index) => {
           const { label, name, type } = field;
           return (
@@ -73,6 +86,7 @@ class LoginForm extends Component {
             />
           );
         })}
+        {formError && <p>{errorMessage}</p>}
         <Button onClick={this.logIn} text="Se connecter" />
       </div>
     );

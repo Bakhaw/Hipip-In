@@ -1,0 +1,38 @@
+.Dropdown {
+  .Dropdown__header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    width: 300px;
+    background: $LightGrey;
+    border: none;
+    margin: 0;
+    .Dropdown__header__text {
+      font-size: 18px;
+      color: $DarkGrey;
+    }
+    .Dropdown__header__chevron {
+      width: 15px;
+    }
+  }
+  .Dropdown__list {
+    padding: 5px 0;
+    background: $LightGrey;
+    margin: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    .Dropdown__list__item {
+      cursor: pointer;
+      text-align: center;
+      list-style-type: none;
+      color: $DarkGrey;
+      padding: 10px 0;
+      &:hover {
+        background: $DarkGrey;
+        color: $LightGrey;
+      }
+    }
+  }
+}

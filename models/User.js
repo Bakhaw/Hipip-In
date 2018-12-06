@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
 const Schema = mongoose.Schema;
 
@@ -25,6 +25,10 @@ const UserSchema = new Schema(
     genre: {
       type: String,
       required: false
+    },
+    hobbies: {
+      type: Array,
+      required: false
     }
   },
   { versionKey: false }
@@ -40,9 +44,9 @@ UserSchema.methods = {
 };
 
 // Hash password before saving it to database
-UserSchema.pre('save', function(next) {
+UserSchema.pre("save", function(next) {
   if (!this.password) {
-    console.log('No password provided');
+    console.log("No password provided");
     next();
   } else {
     this.password = this.hashPassword(this.password);
@@ -50,6 +54,6 @@ UserSchema.pre('save', function(next) {
   }
 });
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model("User", UserSchema);
 
 export default User;

@@ -1,4 +1,5 @@
 .ItemsContainer {
+  border-radius: 0.5rem;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, 33.333%);
@@ -26,11 +27,11 @@
   }
   .Item__active {
     .Item__image {
-      border: 10px solid $BlueGreen;
+      border: 10px solid $Purple;
       border-radius: 50%;
     }
     .Item__text {
-      color: $BlueGreen;
+      color: $Purple;
     }
   }
 }

@@ -6,5 +6,8 @@
   margin: 20px 0;
   .Login__create-account__button {
     color: $BlueGreen;
+    &:hover {
+      color: $Purple;
+    }
   }
 }

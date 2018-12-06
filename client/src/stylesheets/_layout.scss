@@ -9,6 +9,8 @@ $Layout__width__MD: 50vw;
 $Layout__width__XLG: 35vw;
 
 $Footer__height: 100px;
+$AvatarHeader__height: 80px;
+$Header__height: 120px;
 
 // ? on soustrait $Footer__height pour mettre le Footer bien en bas de la page tt le tps
 $Container__height: calc(100vh - #{$Footer__height});

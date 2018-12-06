@@ -1,7 +1,7 @@
-import React from 'react';
-import RegisterDone from './RegisterDone';
-import RegisterForm from './RegisterForm';
-import RegisterHobbies from './RegisterHobbies';
+import React from "react";
+import RegisterDone from "./RegisterDone";
+import RegisterForm from "./RegisterForm";
+import RegisterHobbies from "./RegisterHobbies";
 
 const StepsDetails = ({
   goToRegisterDone,
@@ -13,11 +13,12 @@ const StepsDetails = ({
     component: <RegisterForm />,
     navigation: {
       chevronRight: true,
-      chevronLeft: false,
+      chevronLeft: true,
+      chevronLeftText: "Connexion",
       nextStep: nextStep,
-      prevStep: null
+      prevStep: () => history.replace("/login")
     },
-    sectionTitle: 'Infos persos'
+    sectionTitle: "Infos persos"
   },
   {
     component: <RegisterHobbies goToRegisterDone={goToRegisterDone} />,
@@ -37,7 +38,7 @@ const StepsDetails = ({
       nextStep: null,
       prevStep: null
     },
-    sectionTitle: 'Bievenue'
+    sectionTitle: "Bievenue"
   }
 ];
 

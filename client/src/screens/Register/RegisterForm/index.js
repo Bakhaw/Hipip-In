@@ -4,10 +4,11 @@ import Avatar from "../../../components/Avatar";
 import Input from "../../../components/Input";
 import RegisterFormFields from "./RegisterFormFields";
 
-import { withContext } from "../../../context";
+import { withContext } from "../../../context/Register";
 
 function RegisterForm({ contextActions, contextState: { registerForm } }) {
   const {
+    checkFormErrors,
     handleRegisterFormInputChange,
     handleRegisterFormSelectGenre
   } = contextActions;
@@ -15,14 +16,18 @@ function RegisterForm({ contextActions, contextState: { registerForm } }) {
     <div className="RegisterForm">
       {RegisterFormFields.map((field, index) => {
         const { label, name, type } = field;
+        const { error, errorMessage, value } = registerForm[name];
         return (
           <Input
             key={index}
+            error={error}
+            errorMessage={errorMessage}
             label={label}
             name={name}
+            onBlur={() => checkFormErrors(name)} // TODO
             onChange={handleRegisterFormInputChange}
             type={type}
-            value={registerForm[name]}
+            value={value}
           />
         );
       })}

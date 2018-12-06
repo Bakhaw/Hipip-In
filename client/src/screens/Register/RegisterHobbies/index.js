@@ -5,26 +5,35 @@ import Button from "../../../components/Button";
 import Hobbies from "./Hobbies";
 import ItemsContainer from "../../../components/ItemsContainer";
 
-import { withContext } from "../../../context";
+import { withContext } from "../../../context/Register";
 
-function RegisterHobbies({ contextState: { registerForm }, goToRegisterDone }) {
+function RegisterHobbies({
+  contextState: { registerForm, selectedHobbies },
+  goToRegisterDone
+}) {
   async function submitRegister() {
     const { lastname, firstname, email, password, genre } = registerForm;
     const params = new URLSearchParams();
-    params.append("lastname", lastname);
-    params.append("firstname", firstname);
-    params.append("email", email);
-    params.append("password", password);
+
+    params.append("lastname", lastname.value);
+    params.append("firstname", firstname.value);
+    params.append("email", email.value);
+    params.append("password", password.value);
     params.append("genre", genre);
+    params.append("hobbies", JSON.stringify(selectedHobbies));
 
     await axios({
-      method: "post",
       data: params,
+      method: "post",
       url: "/auth/register"
     })
       .then(res => {
-        console.log(res);
-        goToRegisterDone();
+        if (res.data.success) {
+          console.log(res.data);
+          goToRegisterDone();
+        } else {
+          console.log(res.data);
+        }
       })
       .catch(err => console.log(err));
   }

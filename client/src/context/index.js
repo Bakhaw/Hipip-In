@@ -11,54 +11,15 @@ export class AppStateProvider extends Component {
   state = {
     isAppLoading: false,
     isUserLogged: false,
-    registerForm: {
-      lastname: "",
-      firstname: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      genre: ""
-    },
     userLogged: {}
   };
 
-  handleRegisterFormInputChange = e => {
-    this.setState({
-      registerForm: {
-        ...this.state.registerForm,
-        [e.target.name]: e.target.value
-      }
-    });
-  };
-
-  handleRegisterFormSelectGenre = genre => {
-    this.setState({
-      registerForm: {
-        ...this.state.registerForm,
-        genre
-      }
-    });
-  };
-
   getUser = async () => {
+    console.log("GET /auth/profile");
     const request = await axios.get("/auth/profile");
     const userLogged = request.data.user;
     const isUserLogged = userLogged === null ? false : true;
     this.setState({ isUserLogged, userLogged });
-  };
-
-  logIn = async (email, password) => {
-    const params = new URLSearchParams();
-    params.append("email", email);
-    params.append("password", password);
-
-    await axios({
-      data: params,
-      method: "post",
-      url: "/auth/login"
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
   };
 
   toggleAppLoading = async bool => {
@@ -66,21 +27,18 @@ export class AppStateProvider extends Component {
   };
 
   render() {
-    const { isAppLoading, isUserLogged, registerForm, userLogged } = this.state;
+    const { isAppLoading, isUserLogged, userLogged } = this.state;
     return (
       <Provider
         value={{
           contextActions: {
             getUser: this.getUser,
-            handleRegisterFormInputChange: this.handleRegisterFormInputChange,
-            handleRegisterFormSelectGenre: this.handleRegisterFormSelectGenre,
             logIn: this.logIn,
             toggleAppLoading: this.toggleAppLoading
           },
           contextState: {
             isAppLoading,
             isUserLogged,
-            registerForm,
             userLogged
           }
         }}

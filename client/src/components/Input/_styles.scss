@@ -18,3 +18,12 @@
     font-size: 24px;
   }
 }
+
+.Input__error {
+  .Input__label {
+    color: red;
+  }
+  .Input__input {
+    border: 5px solid red;
+  }
+}
