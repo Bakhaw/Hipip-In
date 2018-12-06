@@ -1,15 +1,23 @@
 import React from "react";
+import classNames from "classnames";
 import ChevronLeftIcon from "../../assets/images/layout/chevron-left.png";
 
-function ChevronLeft({ onClick, text }) {
+function ChevronLeft({ disabled, onClick, text }) {
   return (
-    <div className="Chevron Chevron__left" onClick={onClick}>
+    <div
+      className={classNames(
+        "Chevron",
+        "Chevron__left",
+        disabled && "Chevron__disabled"
+      )}
+      onClick={onClick}
+    >
       <img
         alt="Bouton Retour"
         className="Chevron__image"
         src={ChevronLeftIcon}
       />
-      <p>{text || "Précédent"}</p>
+      <p className="Chevron__text">{text || "Précédent"}</p>
     </div>
   );
 }

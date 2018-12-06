@@ -11,6 +11,7 @@ export const withContext = Comp => props => (
 
 export class RegisterProvider extends Component {
   state = {
+    canSubmit: false,
     registerForm: RegisterFormState,
     selectedHobbies: []
   };
@@ -51,9 +52,13 @@ export class RegisterProvider extends Component {
   };
 
   checkFormErrors = key => {
+    Object.entries(this.state.registerForm).map(item => {
+      if (item[1].value === "") this.setState({ canSubmit: false });
+    });
+
     switch (key) {
       case "email":
-        this.checkEmailErrors(key);
+        this.checkEmailErrors();
         break;
       case "password":
         this.checkPasswordErrors();
@@ -66,53 +71,54 @@ export class RegisterProvider extends Component {
     }
   };
 
+  toggleFormFieldError = errorObj => {
+    const { error, errorMessage, key } = errorObj;
+    return {
+      ...this.state.registerForm[key],
+      error,
+      errorMessage
+    };
+  };
+
   checkPasswordErrors = async () => {
     const { registerForm } = this.state;
     const { confirmPassword, password } = registerForm;
 
     if (confirmPassword.value === "" || password.value === "") return;
 
-    let newState = {};
+    let errorObj;
+    let canSubmit;
 
     if (confirmPassword.value !== password.value) {
-      newState = {
-        registerForm: {
-          ...registerForm,
-          confirmPassword: {
-            ...registerForm.confirmPassword,
-            error: true,
-            errorMessage: "Les mots de passe doivent correspondre"
-          },
-          password: {
-            ...registerForm.password,
-            error: true,
-            errorMessage: "Les mots de passe doivent correspondre"
-          }
-        }
-      };
+      canSubmit = false;
+      errorObj = key => ({
+        error: true,
+        errorMessage: "Les mots de passe doivent correspondre",
+        key
+      });
     } else {
-      newState = {
-        registerForm: {
-          ...registerForm,
-          confirmPassword: {
-            ...registerForm.confirmPassword,
-            error: false,
-            errorMessage: ""
-          },
-          password: {
-            ...registerForm.password,
-            error: false,
-            errorMessage: ""
-          }
-        }
-      };
+      canSubmit = true;
+      errorObj = key => ({
+        error: false,
+        errorMessage: null,
+        key
+      });
     }
+
+    const newState = {
+      canSubmit,
+      registerForm: {
+        ...registerForm,
+        confirmPassword: this.toggleFormFieldError(errorObj("confirmPassword")),
+        password: this.toggleFormFieldError(errorObj("password"))
+      }
+    };
     return this.setState(newState);
   };
 
-  checkEmailErrors = async key => {
-    console.log("check email");
-    const { value } = this.state.registerForm[key];
+  checkEmailErrors = async () => {
+    const { registerForm } = this.state;
+    const { value } = registerForm.email;
 
     if (value === "") return;
 
@@ -125,60 +131,49 @@ export class RegisterProvider extends Component {
       url: "/auth/checkIfUserExists"
     })
       .then(res => {
-        const { success } = res.data;
-        let newState = {};
-
-        if (!success) {
-          newState = {
-            registerForm: {
-              ...this.state.registerForm,
-              [key]: {
-                ...this.state.registerForm[key],
-                error: true,
-                errorMessage: "Email déjà utilisé"
-              }
-            }
-          };
-        } else {
-          newState = {
-            registerForm: {
-              ...this.state.registerForm,
-              [key]: {
-                ...this.state.registerForm[key],
-                error: false,
-                errorMessage: ""
-              }
-            }
-          };
-        }
+        const { error, message } = res.data;
+        const newState = {
+          canSubmit: !error,
+          registerForm: {
+            ...registerForm,
+            email: this.toggleFormFieldError({
+              error,
+              errorMessage: message,
+              key: "email"
+            })
+          }
+        };
         return this.setState(newState);
       })
       .catch(err => console.log(err));
   };
 
-  handleRegisterFormInputChange = e => {
+  handleRegisterFormInputChange = ({ target: { name, value } }) => {
+    const { registerForm } = this.state;
     this.setState({
       registerForm: {
-        ...this.state.registerForm,
-        [e.target.name]: {
-          ...this.state.registerForm[e.target.name],
-          value: e.target.value
+        ...registerForm,
+        [name]: {
+          ...registerForm[name],
+          value
         }
       }
     });
   };
 
   handleRegisterFormSelectGenre = genre => {
+    const { registerForm } = this.state;
     this.setState({
       registerForm: {
-        ...this.state.registerForm,
+        ...registerForm,
         genre
       }
     });
   };
 
   render() {
-    const { registerForm, selectedHobbies } = this.state;
+    const { canSubmit, registerForm, selectedHobbies } = this.state;
+    console.log({ canSubmit });
     return (
       <Provider
         value={{
@@ -190,6 +185,7 @@ export class RegisterProvider extends Component {
             logIn: this.logIn
           },
           contextState: {
+            canSubmit,
             registerForm,
             selectedHobbies
           }

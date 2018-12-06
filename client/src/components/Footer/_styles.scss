@@ -11,8 +11,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #fff;
-  font-size: 22px;
+  .Chevron__text {
+    color: #fff;
+    font-size: 22px;
+  }
   .Chevron__image {
     width: 40px;
   }
@@ -21,7 +23,7 @@
 .Chevron__left {
   margin-right: auto;
   padding-left: 50px;
-  &:hover {
+  .Chevron__text:hover {
     color: $Purple;
   }
 }
@@ -29,7 +31,13 @@
 .Chevron__right {
   margin-left: auto;
   padding-right: 50px;
-  &:hover {
+  .Chevron__text:hover {
     color: $BlueGreen;
   }
+}
+
+.Chevron__disabled {
+  filter: opacity(25%);
+  cursor: not-allowed;
+  pointer-events: none;
 }

@@ -18,13 +18,13 @@ router.post("/checkIfUserExists", (req, res) => {
   User.findOne({ email }, (err, user) => {
     if (user) {
       return res.json({
-        message: `Sorry, already a user with this email: ${email}`,
-        success: false
+        error: true,
+        message: "Email déjà utilisé"
       });
     } else {
       return res.json({
-        message: `Email is valid: ${email}`,
-        success: true
+        error: false,
+        message: "Email valide"
       });
     }
   });

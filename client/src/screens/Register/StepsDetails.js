@@ -14,6 +14,7 @@ const StepsDetails = ({
     navigation: {
       chevronRight: true,
       chevronLeft: true,
+      chevronLeftDisabled: false,
       chevronLeftText: "Connexion",
       nextStep: nextStep,
       prevStep: () => history.replace("/login")
