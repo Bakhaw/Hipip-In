@@ -7,12 +7,17 @@ const StepsDetails = ({
   goToRegisterDone,
   nextStep,
   prevStep,
-  props: { history }
+  props: {
+    contextState: { canSubmit },
+    history
+  }
 }) => [
   {
     component: <RegisterForm />,
     navigation: {
       chevronRight: true,
+      chevronRightDisabled: !canSubmit,
+      chevronLeftDisabled: false,
       chevronLeft: true,
       chevronLeftDisabled: false,
       chevronLeftText: "Connexion",

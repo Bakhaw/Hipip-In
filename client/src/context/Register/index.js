@@ -52,10 +52,6 @@ export class RegisterProvider extends Component {
   };
 
   checkFormErrors = key => {
-    Object.entries(this.state.registerForm).map(item => {
-      if (item[1].value === "") this.setState({ canSubmit: false });
-    });
-
     switch (key) {
       case "email":
         this.checkEmailErrors();
@@ -69,14 +65,29 @@ export class RegisterProvider extends Component {
       default:
         break;
     }
+
+    let canSubmit;
+    Object.entries(this.state.registerForm).map(item => {
+      const { error, value } = item[1];
+      if (error === null) return;
+      if (error === true) return this.setState({ canSubmit: false });
+
+      if (error !== true && value !== "") {
+        canSubmit = true;
+      } else {
+        canSubmit = false;
+      }
+    });
+
+    return this.setState({ canSubmit });
   };
 
   toggleFormFieldError = errorObj => {
-    const { error, errorMessage, key } = errorObj;
+    const { error, message, key } = errorObj;
     return {
       ...this.state.registerForm[key],
       error,
-      errorMessage
+      message
     };
   };
 
@@ -87,26 +98,22 @@ export class RegisterProvider extends Component {
     if (confirmPassword.value === "" || password.value === "") return;
 
     let errorObj;
-    let canSubmit;
 
     if (confirmPassword.value !== password.value) {
-      canSubmit = false;
       errorObj = key => ({
         error: true,
-        errorMessage: "Les mots de passe doivent correspondre",
+        message: "Les mots de passe doivent correspondre",
         key
       });
     } else {
-      canSubmit = true;
       errorObj = key => ({
         error: false,
-        errorMessage: null,
+        message: "Mots de passe valides",
         key
       });
     }
 
     const newState = {
-      canSubmit,
       registerForm: {
         ...registerForm,
         confirmPassword: this.toggleFormFieldError(errorObj("confirmPassword")),
@@ -122,6 +129,21 @@ export class RegisterProvider extends Component {
 
     if (value === "") return;
 
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const isEmailValid = regex.test(String(value).toLowerCase());
+
+    if (!isEmailValid)
+      return this.setState({
+        registerForm: {
+          ...registerForm,
+          email: this.toggleFormFieldError({
+            error: true,
+            message: "Email invalide",
+            key: "email"
+          })
+        }
+      });
+
     const params = new URLSearchParams();
     params.append("email", value);
 
@@ -133,12 +155,11 @@ export class RegisterProvider extends Component {
       .then(res => {
         const { error, message } = res.data;
         const newState = {
-          canSubmit: !error,
           registerForm: {
             ...registerForm,
             email: this.toggleFormFieldError({
               error,
-              errorMessage: message,
+              message,
               key: "email"
             })
           }
@@ -166,14 +187,17 @@ export class RegisterProvider extends Component {
     this.setState({
       registerForm: {
         ...registerForm,
-        genre
+        genre: {
+          ...registerForm.genre,
+          value: genre
+        }
       }
     });
   };
 
   render() {
     const { canSubmit, registerForm, selectedHobbies } = this.state;
-    console.log({ canSubmit });
+    console.log(registerForm);
     return (
       <Provider
         value={{

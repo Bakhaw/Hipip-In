@@ -16,13 +16,13 @@ function RegisterForm({ contextActions, contextState: { registerForm } }) {
     <div className="RegisterForm">
       {RegisterFormFields.map((field, index) => {
         const { label, name, type } = field;
-        const { error, errorMessage, value } = registerForm[name];
+        const { error, message, value } = registerForm[name];
         return (
           <Input
             key={index}
             error={error}
-            errorMessage={errorMessage}
             label={label}
+            message={message}
             name={name}
             onBlur={() => checkFormErrors(name)} // TODO
             onChange={handleRegisterFormInputChange}
@@ -34,13 +34,13 @@ function RegisterForm({ contextActions, contextState: { registerForm } }) {
 
       <div className="RegisterForm__avatars">
         <Avatar
-          isActive={registerForm.genre === "boy"}
+          isActive={registerForm.genre.value === "boy"}
           onClick={() => handleRegisterFormSelectGenre("boy")}
           text="Homme"
           type="boy"
         />
         <Avatar
-          isActive={registerForm.genre === "girl"}
+          isActive={registerForm.genre.value === "girl"}
           onClick={() => handleRegisterFormSelectGenre("girl")}
           text="Femme"
           type="girl"

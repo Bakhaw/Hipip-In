@@ -3,8 +3,6 @@ import React from "react";
 import ChevronLeft from "./ChevronLeft";
 import ChevronRight from "./ChevronRight";
 
-import { withContext } from "../../context/Register";
-
 function Footer({
   chevronLeft,
   chevronLeftDisabled,
@@ -12,7 +10,6 @@ function Footer({
   chevronRight,
   chevronRightDisabled,
   chevronRightText,
-  contextState: { canSubmit },
   nextStep,
   prevStep
 }) {
@@ -20,16 +17,14 @@ function Footer({
     <div className="Footer">
       {chevronLeft && (
         <ChevronLeft
-          disabled={
-            chevronLeftDisabled !== undefined ? chevronLeftDisabled : !canSubmit
-          }
+          disabled={chevronLeftDisabled}
           onClick={prevStep}
           text={chevronLeftText}
         />
       )}
       {chevronRight && (
         <ChevronRight
-          disabled={chevronRightDisabled || !canSubmit}
+          disabled={chevronRightDisabled}
           onClick={nextStep}
           text={chevronRightText}
         />
@@ -38,4 +33,4 @@ function Footer({
   );
 }
 
-export default withContext(Footer);
+export default Footer;

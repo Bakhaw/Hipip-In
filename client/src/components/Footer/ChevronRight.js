@@ -11,6 +11,8 @@ function ChevronRight({ disabled, onClick, text }) {
         disabled && "Chevron__disabled"
       )}
       onClick={onClick}
+      role="button"
+      tabIndex={0}
     >
       <p className="Chevron__text">{text || "Suivant"}</p>
       <img

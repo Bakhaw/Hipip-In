@@ -1,30 +1,34 @@
 const RegisterFormFields = {
   lastname: {
-    error: false,
-    errorMessage: "",
+    error: null,
+    message: "",
     value: ""
   },
   firstname: {
-    error: false,
-    errorMessage: "",
+    error: null,
+    message: "",
     value: ""
   },
   email: {
-    error: false,
-    errorMessage: "",
+    error: null,
+    message: "",
     value: ""
   },
   password: {
-    error: false,
-    errorMessage: "",
+    error: null,
+    message: "",
     value: ""
   },
   confirmPassword: {
-    error: false,
-    errorMessage: "",
+    error: null,
+    message: "",
     value: ""
   },
-  genre: ""
+  genre: {
+    error: null,
+    message: "",
+    value: ""
+  }
 };
 
 export default RegisterFormFields;

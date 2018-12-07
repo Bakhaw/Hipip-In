@@ -1,4 +1,13 @@
 .Avatar {
+  font-family: $Futura;
+  font-size: 15px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  outline-color: $Purple;
+  &:active {
+    outline: none;
+  }
   .Avatar__image {
     border: 10px solid transparent;
     cursor: pointer;
@@ -19,6 +28,7 @@
 }
 
 .Avatar__active {
+  outline: none;
   .Avatar__image {
     border: 10px solid $Purple;
   }

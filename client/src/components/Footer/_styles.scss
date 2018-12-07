@@ -11,6 +11,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &:active {
+    outline: none;
+  }
   .Chevron__text {
     color: #fff;
     font-size: 22px;
@@ -21,16 +24,20 @@
 }
 
 .Chevron__left {
+  outline-color: $Purple;
   margin-right: auto;
-  padding-left: 50px;
+  margin-left: 50px;
+  padding: 0 10px;
   .Chevron__text:hover {
     color: $Purple;
   }
 }
 
 .Chevron__right {
+  outline-color: $BlueGreen;
   margin-left: auto;
-  padding-right: 50px;
+  margin-right: 50px;
+  padding: 0 10px;
   .Chevron__text:hover {
     color: $BlueGreen;
   }

@@ -11,6 +11,8 @@ function ChevronLeft({ disabled, onClick, text }) {
         disabled && "Chevron__disabled"
       )}
       onClick={onClick}
+      role="button"
+      tabIndex={0}
     >
       <img
         alt="Bouton Retour"
