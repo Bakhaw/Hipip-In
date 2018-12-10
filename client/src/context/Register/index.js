@@ -52,6 +52,24 @@ export class RegisterProvider extends Component {
   };
 
   checkFormErrors = key => {
+    (() => {
+      let canSubmit = null;
+      // TODO check erreurs de formulaire avant de pouvoir passer à l'étape suivante
+      Object.entries(this.state.registerForm).map(item => {
+        const { error, value } = item[1];
+        // ? error = null par défaut pour ne pas afficher le texte de l'input, donc on skip
+        if (error === null) return;
+
+        if (error === true || value === "") {
+          canSubmit = false;
+        } else {
+          canSubmit = true;
+        }
+      });
+      console.log({ canSubmit });
+      return this.setState({ canSubmit });
+    })();
+
     switch (key) {
       case "email":
         this.checkEmailErrors();
@@ -65,21 +83,6 @@ export class RegisterProvider extends Component {
       default:
         break;
     }
-
-    let canSubmit;
-    Object.entries(this.state.registerForm).map(item => {
-      const { error, value } = item[1];
-      if (error === null) return;
-      if (error === true) return this.setState({ canSubmit: false });
-
-      if (error !== true && value !== "") {
-        canSubmit = true;
-      } else {
-        canSubmit = false;
-      }
-    });
-
-    return this.setState({ canSubmit });
   };
 
   toggleFormFieldError = errorObj => {
@@ -134,6 +137,7 @@ export class RegisterProvider extends Component {
 
     if (!isEmailValid)
       return this.setState({
+        canSubmit: false,
         registerForm: {
           ...registerForm,
           email: this.toggleFormFieldError({
@@ -197,7 +201,6 @@ export class RegisterProvider extends Component {
 
   render() {
     const { canSubmit, registerForm, selectedHobbies } = this.state;
-    console.log(registerForm);
     return (
       <Provider
         value={{
