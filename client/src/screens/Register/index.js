@@ -3,10 +3,10 @@ import Register from "./Register";
 
 import { RegisterProvider, withContext } from "../../context/Register";
 
-function RegisterWrapper() {
+function RegisterWrapper({ history }) {
   return (
     <RegisterProvider>
-      <Register />
+      <Register history={history} />
     </RegisterProvider>
   );
 }

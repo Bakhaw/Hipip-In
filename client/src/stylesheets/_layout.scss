@@ -14,3 +14,4 @@ $Header__height: 150px;
 
 // ? on soustrait $Footer__height pour mettre le Footer bien en bas de la page tt le tps
 $Container__height: calc(100vh - #{$Footer__height});
+$Container__children__min-height: 300px;

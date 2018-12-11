@@ -30,7 +30,7 @@ export class RegisterProvider extends Component {
       .catch(err => console.log(err));
   };
 
-  handleSelectItem = async item => {
+  handleSelectHobbie = async item => {
     await this.setState(prevState => {
       const newState = Object.assign({}, prevState);
 
@@ -208,7 +208,7 @@ export class RegisterProvider extends Component {
             checkFormErrors: this.checkFormErrors,
             handleRegisterFormInputChange: this.handleRegisterFormInputChange,
             handleRegisterFormSelectGenre: this.handleRegisterFormSelectGenre,
-            handleSelectItem: this.handleSelectItem,
+            handleSelectHobbie: this.handleSelectHobbie,
             logIn: this.logIn
           },
           contextState: {

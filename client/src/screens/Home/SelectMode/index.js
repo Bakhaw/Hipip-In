@@ -2,13 +2,29 @@ import React from "react";
 
 import Button from "../../../components/Button";
 
-function SelectMode({ goToRandomStep, goToSelectPersonsStep }) {
+import { withContext } from "../../../context/Home";
+
+function SelectMode({
+  contextActions: { handleSelectMode },
+  goToRandomStep,
+  goToSelectPersonsStep
+}) {
+  async function selectRandom() {
+    await handleSelectMode("random");
+    goToRandomStep();
+  }
+
+  async function selectPerson() {
+    await handleSelectMode("je choisis");
+    goToSelectPersonsStep();
+  }
+
   return (
     <div className="SelectMode">
-      <Button onClick={goToRandomStep} text="Random" />
-      <Button onClick={goToSelectPersonsStep} text="Je choisis" />
+      <Button onClick={selectRandom} text="Random" />
+      <Button onClick={selectPerson} text="Je choisis" />
     </div>
   );
 }
 
-export default SelectMode;
+export default withContext(SelectMode);

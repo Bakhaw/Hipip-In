@@ -8,6 +8,7 @@ import ItemsContainer from "../../../components/ItemsContainer";
 import { withContext } from "../../../context/Register";
 
 function RegisterHobbies({
+  contextActions: { handleSelectHobbie },
   contextState: { registerForm, selectedHobbies },
   goToRegisterDone
 }) {
@@ -39,7 +40,11 @@ function RegisterHobbies({
   }
   return (
     <div className="RegisterHobbies">
-      <ItemsContainer items={Hobbies} />
+      <ItemsContainer
+        items={Hobbies}
+        handleSelectItem={handleSelectHobbie}
+        selectedItems={selectedHobbies}
+      />
       <Button onClick={submitRegister} text="Confirmer mon inscription" />
     </div>
   );

@@ -2,7 +2,8 @@
   min-height: $Container__height;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  border: 2px solid yellow;
   .Container__title {
     color: #fff;
     margin: 10px 0;
@@ -12,6 +13,8 @@
     text-align: center;
   }
   .Container__children {
+    border: 2px solid yellow;
+    min-height: $Container__children__min-height;
     height: 100%;
     width: $Layout__width__XLG;
     margin: auto;

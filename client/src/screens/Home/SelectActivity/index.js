@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withContext } from "../../../context/Home";
+
 const baseImgPath = "src/assets/images/activities";
 
 const Activities = [
@@ -16,45 +18,36 @@ const Activities = [
   }
 ];
 
-class SelectActivity extends Component {
-  state = {
-    selectedActivity: ""
-  };
-
-  selectActivity = activity => {
-    this.setState({ selectedActivity: activity.text });
-  };
-
-  render() {
-    const { selectedActivity } = this.state;
-    return (
-      <div className="SelectActivity">
-        <div className="SelectActivity__Activities">
-          {Activities.map((activity, index) => {
-            const { image, text } = activity;
-            return (
-              <div
-                className={`SelectActivity__Activity ${
-                  selectedActivity === text
-                    ? "SelectActivity__Activity__active"
-                    : ""
-                }`}
-                key={index}
-                onClick={() => this.selectActivity(activity)}
-              >
-                <img
-                  alt={`Icône ${text}`}
-                  className="SelectActivity__Activity__image"
-                  src={image}
-                />
-                <p className="SelectActivity__Activity__text">{text}</p>
-              </div>
-            );
-          })}
-        </div>
+function SelectActivity({
+  contextActions: { handleSelectActivity },
+  contextState: { selectedActivity }
+}) {
+  return (
+    <div className="SelectActivity">
+      <div className="SelectActivity__Activities">
+        {Activities.map((activity, index) => {
+          const { image, text } = activity;
+          const isActive = selectedActivity && selectedActivity.text === text;
+          return (
+            <div
+              className={`SelectActivity__Activity ${
+                isActive ? "SelectActivity__Activity__active" : ""
+              }`}
+              key={index}
+              onClick={() => handleSelectActivity(activity)}
+            >
+              <img
+                alt={`Icône ${text}`}
+                className="SelectActivity__Activity__image"
+                src={image}
+              />
+              <p className="SelectActivity__Activity__text">{text}</p>
+            </div>
+          );
+        })}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-export default SelectActivity;
+export default withContext(SelectActivity);

@@ -1,1 +1,6 @@
 @import './CreateAccountButton/CreateAccountButton';
+
+.Login {
+  border: 2px solid red;
+  min-height: $Container__children__min-height;
+}

@@ -1,4 +1,10 @@
 .SelectMode {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  width: 300px;
+  height: $Container__children__min-height;
   button {
     margin: 20px 0;
   }

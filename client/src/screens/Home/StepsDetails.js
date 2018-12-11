@@ -1,9 +1,9 @@
-import React from 'react';
-import Random from './SelectMode/Random';
-import SelectActivity from './SelectActivity';
-import SelectHour from './SelectHour';
-import SelectMode from './SelectMode';
-import SelectPersons from './SelectMode/SelectPersons';
+import React from "react";
+import Random from "./SelectMode/Random";
+import SelectActivity from "./SelectActivity";
+import SelectHour from "./SelectHour";
+import SelectMode from "./SelectMode";
+import SelectPersons from "./SelectMode/SelectPersons";
 
 const StepsDetails = ({
   goToRandomStep,
@@ -11,17 +11,21 @@ const StepsDetails = ({
   goToSelectMode,
   goToSelectPersonsStep,
   nextStep,
-  prevStep
+  prevStep,
+  props: {
+    contextState: { selectedActivity, selectedMode }
+  }
 }) => [
   {
     component: <SelectActivity />,
     navigation: {
       chevronRight: true,
+      chevronRightDisabled: selectedActivity === null,
       chevronLeft: false,
       nextStep: nextStep,
       prevStep: null
     },
-    sectionTitle: 'Tu veux faire quoi ?'
+    sectionTitle: "Tu veux faire quoi ?"
   },
   {
     component: (
@@ -36,7 +40,7 @@ const StepsDetails = ({
       nextStep: null,
       prevStep: prevStep
     },
-    sectionTitle: 'Avec qui ?'
+    sectionTitle: "Avec qui ?"
   },
   {
     component: <Random />,
@@ -46,7 +50,7 @@ const StepsDetails = ({
       nextStep: goToSelectHour,
       prevStep: prevStep
     },
-    sectionTitle: ''
+    sectionTitle: ""
   },
   {
     component: <SelectPersons />,
@@ -56,7 +60,7 @@ const StepsDetails = ({
       nextStep: nextStep,
       prevStep: goToSelectMode
     },
-    sectionTitle: ''
+    sectionTitle: ""
   },
   {
     component: <SelectHour />,
@@ -64,9 +68,10 @@ const StepsDetails = ({
       chevronRight: false,
       chevronLeft: true,
       nextStep: null,
-      prevStep: goToSelectMode
+      prevStep:
+        selectedMode === "random" ? goToRandomStep : goToSelectPersonsStep
     },
-    sectionTitle: 'Quand ?'
+    sectionTitle: "Quand ?"
   }
 ];
 

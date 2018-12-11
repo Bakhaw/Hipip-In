@@ -19,7 +19,7 @@ class Dropdown extends Component {
   };
   render() {
     const { isDropdownOpen, selectedDropdownItem } = this.state;
-    const { text } = this.props;
+    const { listItems, text } = this.props;
     return (
       <div className="Dropdown">
         <DropdownButton
@@ -29,7 +29,10 @@ class Dropdown extends Component {
           toggleDropdown={this.toggleDropdown}
         />
         {isDropdownOpen && (
-          <List selectDropdownItem={this.selectDropdownItem} />
+          <List
+            listItems={listItems}
+            selectDropdownItem={this.selectDropdownItem}
+          />
         )}
       </div>
     );

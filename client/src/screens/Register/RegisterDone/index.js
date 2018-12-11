@@ -4,7 +4,7 @@ import { withContext } from "../../../context/Register";
 
 function RegisterDone({ contextActions, contextState, history }) {
   const { firstname, email, password } = contextState.registerForm;
-
+  console.log("here", history);
   async function handleEnterClickButton() {
     await contextActions.logIn(email.value, password.value);
     history.replace("/");
