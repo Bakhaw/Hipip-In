@@ -4,6 +4,9 @@
   width: 100%;
   text-align: center;
   margin: 20px 0;
+  @include xs {
+    font-size: 25px;
+  }
   .Login__create-account__button {
     color: $BlueGreen;
     &:hover {

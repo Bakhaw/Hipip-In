@@ -72,21 +72,23 @@ class LoginForm extends Component {
     if (isAppLoading) return <Spinner />;
 
     return (
-      <div>
-        {LoginFormFields.map((field, index) => {
-          const { label, name, type } = field;
-          return (
-            <Input
-              key={index}
-              label={label}
-              name={name}
-              onChange={this.handleInputChange}
-              type={type}
-              value={this.state[name]}
-            />
-          );
-        })}
-        {formError && <p>{errorMessage}</p>}
+      <div className="LoginForm">
+        <div>
+          {LoginFormFields.map((field, index) => {
+            const { label, name, type } = field;
+            return (
+              <Input
+                key={index}
+                label={label}
+                name={name}
+                onChange={this.handleInputChange}
+                type={type}
+                value={this.state[name]}
+              />
+            );
+          })}
+          {formError && <p>{errorMessage}</p>}
+        </div>
         <Button onClick={this.logIn} text="Se connecter" />
       </div>
     );

@@ -17,9 +17,18 @@
   .Chevron__text {
     color: #fff;
     font-size: 22px;
+    @include xs {
+      font-size: 20px;
+    }
   }
   .Chevron__image {
     width: 40px;
+    @include xs {
+      width: 25px;
+    }
+    @include sm {
+      width: 30px;
+    }
   }
 }
 
@@ -28,6 +37,9 @@
   margin-right: auto;
   margin-left: 50px;
   padding: 0 10px;
+  @include xs {
+    margin-left: 10px;
+  }
   .Chevron__text:hover {
     color: $Purple;
   }
@@ -38,6 +50,9 @@
   margin-left: auto;
   margin-right: 50px;
   padding: 0 10px;
+  @include xs {
+    margin-right: 10px;
+  }
   .Chevron__text:hover {
     color: $BlueGreen;
   }

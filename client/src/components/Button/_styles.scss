@@ -20,6 +20,9 @@
     font-weight: bold;
     text-transform: uppercase;
     flex: 1;
+    @include xs {
+      font-size: 20px;
+    }
     &::before {
       content: '';
       flex: 1;

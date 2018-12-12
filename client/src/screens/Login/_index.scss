@@ -1,6 +1,14 @@
 @import './CreateAccountButton/CreateAccountButton';
 
 .Login {
-  border: 2px solid red;
+  // border: 2px solid red;
   min-height: $Container__children__min-height;
+  height: 350px;
+  .LoginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    // border: 2px solid green;
+  }
 }

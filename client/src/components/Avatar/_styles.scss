@@ -14,12 +14,23 @@
     border-radius: 50%;
     height: 150px;
     width: 150px;
+    @include xs {
+      height: 100px;
+      width: 100px;
+    }
+    @include sm {
+      height: 120px;
+      width: 120px;
+    }
   }
   .Avatar__text {
     margin: 0;
     text-align: center;
     color: #fff;
     text-transform: uppercase;
+    @include xs {
+      font-size: 18px;
+    }
   }
   .Avatar__small {
     height: 90px;
