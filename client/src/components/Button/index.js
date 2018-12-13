@@ -4,10 +4,15 @@ import DoubleChevronRight from "../../assets/images/layout/double-chevron-right.
 
 import Fab from "@material-ui/core/Fab";
 
-function CustomButton({ disabled, onClick, text }) {
+function CustomButton({ disabled, onClick, style, text }) {
   return (
     <Fragment>
-      <Fab className="CustomButton" disabled={disabled} onClick={onClick}>
+      <Fab
+        className="CustomButton"
+        disabled={disabled}
+        onClick={onClick}
+        style={style}
+      >
         <p>{text}</p>
         <img
           alt="Icône bouton flèche suivant"
@@ -21,5 +26,9 @@ function CustomButton({ disabled, onClick, text }) {
     </Fragment>
   );
 }
+
+CustomButton.defaultProps = {
+  text: "Button"
+};
 
 export default CustomButton;
