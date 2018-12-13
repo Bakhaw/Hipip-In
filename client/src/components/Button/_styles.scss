@@ -1,40 +1,23 @@
-.Button {
+.CustomButton {
   &:hover {
-    background: $BlueGreen;
-  }
-  cursor: pointer;
-  * {
-    cursor: pointer;
-  }
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 20px;
-  width: 100%;
-  background: $LightGrey;
-  border: none;
-  border-radius: 50px;
-  .Button__text {
-    color: $DarkGrey;
-    font-size: 28px;
-    font-weight: bold;
-    text-transform: uppercase;
-    flex: 1;
-    @include xs {
-      font-size: 20px;
+    .CustomButton__icon {
+      filter: brightness(0) invert(1);
     }
+  }
+  p {
+    flex: 1;
+    margin: 0;
     &::before {
       content: '';
       flex: 1;
     }
   }
-  .Button__double-chevron-right {
+  .CustomButton__icon {
     height: 30px;
   }
-}
-
-.Button__disabled {
-  filter: opacity(25%);
-  cursor: not-allowed;
-  pointer-events: none;
+  .CustomButton__icon__disabled {
+    filter: opacity(25%);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }

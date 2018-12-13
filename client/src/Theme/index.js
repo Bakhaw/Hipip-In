@@ -1,9 +1,9 @@
 import React from "react";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import palette from "./palette";
+import theme from "./theme";
 
 function Theme({ children }) {
-  return <MuiThemeProvider theme={palette}>{children}</MuiThemeProvider>;
+  return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
 }
 
 export default Theme;
