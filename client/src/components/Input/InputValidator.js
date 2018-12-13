@@ -22,7 +22,6 @@ function InputValidator({ error, message }) {
             className="Input__valid__image"
             src={validImg}
           />
-          {/* <p className='Input__valid__text'>VALIDE</p> */}
           <p className="Input__valid__text">{message}</p>
         </div>
       )}

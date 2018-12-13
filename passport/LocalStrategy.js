@@ -10,18 +10,24 @@ const LocalStrategy = new Strategy(
         if (err) {
           return done(err);
         }
+        if (userMatch && !userMatch.checkPassword(password)) {
+          return done(null, false, {
+            message: "email valid password error",
+            success: false
+          });
+        }
         if (!userMatch) {
           return done(null, false, {
-            message: "Incorrect email",
+            message: "email error",
             success: false
           });
         }
-        if (!userMatch.checkPassword(password)) {
-          return done(null, false, {
-            message: "Incorrect password",
-            success: false
-          });
-        }
+        // if (!userMatch.checkPassword(password)) {
+        //   return done(null, false, {
+        //     message: 'password error',
+        //     success: false
+        //   });
+        // }
         return done(null, userMatch, {
           message: `Welcome ${userMatch.firstname}`,
           success: true

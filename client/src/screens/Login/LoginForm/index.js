@@ -22,14 +22,23 @@ const LoginFormFields = [
 
 class LoginForm extends Component {
   state = {
-    email: "",
-    password: "",
-    formError: false,
-    errorMessage: ""
+    email: {
+      error: null,
+      value: ""
+    },
+    password: {
+      error: null,
+      value: ""
+    }
   };
 
   handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      [e.target.name]: {
+        ...this.state[e.target.name],
+        value: e.target.value
+      }
+    });
   };
 
   logIn = async () => {
@@ -39,8 +48,8 @@ class LoginForm extends Component {
     } = this.props;
     const { email, password } = this.state;
     const params = new URLSearchParams();
-    params.append("email", email);
-    params.append("password", password);
+    params.append("email", email.value);
+    params.append("password", password.value);
 
     await toggleAppLoading(true);
 
@@ -51,13 +60,43 @@ class LoginForm extends Component {
     })
       .then(res => {
         const { message, success } = res.data;
+        console.log({ message, success });
+
         if (success) {
-          // ? Login successful, clear errors
-          this.setState({ formError: false, errorMessage: "" });
+          // TODO Login successful, clear errors
           history.replace("/");
         } else {
-          // ? Generate error
-          this.setState({ formError: true, errorMessage: message });
+          const errorObj = (key, error, message) => ({
+            [key]: {
+              ...this.state[key],
+              error,
+              message
+            }
+          });
+          // ? Generate message
+          if (message === "email valid password error") {
+            this.setState({
+              email: {
+                ...this.state.email,
+                error: false,
+                message: "Email valide"
+              },
+              password: {
+                ...this.state.password,
+                error: true,
+                message: "Mot de passe incorrect"
+              }
+            });
+          }
+          if (message === "email error") {
+            this.setState({
+              email: {
+                ...this.state.email,
+                error: true,
+                message: "Email incorrect"
+              }
+            });
+          }
         }
       })
       .catch(err => console.log("ERREUR", err.data));
@@ -66,8 +105,9 @@ class LoginForm extends Component {
   };
 
   render() {
-    const { errorMessage, formError } = this.state;
+    const { email, errorMessage, formError, password } = this.state;
     const { isAppLoading } = this.props.contextState;
+    const isButtonDisabled = email.value === "" || password.value === "";
 
     if (isAppLoading) return <Spinner />;
 
@@ -79,17 +119,22 @@ class LoginForm extends Component {
             return (
               <Input
                 key={index}
+                error={this.state[name].error}
+                message={this.state[name].message}
                 label={label}
                 name={name}
                 onChange={this.handleInputChange}
                 type={type}
-                value={this.state[name]}
+                value={this.state[name].value}
               />
             );
           })}
-          {formError && <p>{errorMessage}</p>}
         </div>
-        <Button onClick={this.logIn} text="Se connecter" />
+        <Button
+          disabled={isButtonDisabled}
+          onClick={this.logIn}
+          text="Se connecter"
+        />
       </div>
     );
   }

@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 15px 20px;
   width: 100%;
   background: $LightGrey;
   border: none;
@@ -31,4 +31,10 @@
   .Button__double-chevron-right {
     height: 30px;
   }
+}
+
+.Button__disabled {
+  filter: opacity(25%);
+  cursor: not-allowed;
+  pointer-events: none;
 }
