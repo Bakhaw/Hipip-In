@@ -1,7 +1,7 @@
-import React from "react";
-import Home from "./Home";
+import React from 'react';
+import Home from './Home';
 
-import { HomeProvider } from "../../context/Home";
+import { HomeProvider } from '../../context/Home';
 
 function HomeWrapper({ history }) {
   return (

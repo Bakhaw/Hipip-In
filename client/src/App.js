@@ -1,7 +1,7 @@
-import React from "react";
-import { AppStateProvider } from "./context";
-import Router from "./Router";
-import Theme from "./Theme";
+import React from 'react';
+import { AppStateProvider } from './context';
+import Router from './Router';
+import Theme from './Theme';
 
 function App() {
   return (
