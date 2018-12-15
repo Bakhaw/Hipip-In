@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import Avatar from "../../../components/Avatar";
-import Input from "../../../components/Input";
-import RegisterFormFields from "./RegisterFormFields";
+import Avatar from '../../../components/Avatar';
+import Input from '../../../components/Input';
+import RegisterFormFields from './RegisterFormFields';
 
-import { withContext } from "../../../context/Register";
+import { withContext } from '../../../context/Register';
 
 function RegisterForm({ contextActions, contextState: { registerForm } }) {
   const {
     checkFormErrors,
     handleRegisterFormInputChange,
-    handleRegisterFormSelectGenre
+    handleRegisterFormSelectGenre,
   } = contextActions;
   return (
-    <div className="RegisterForm">
+    <div className='RegisterForm'>
       {RegisterFormFields.map((field, index) => {
         const { label, name, type } = field;
         const { error, message, value } = registerForm[name];
@@ -32,18 +32,18 @@ function RegisterForm({ contextActions, contextState: { registerForm } }) {
         );
       })}
 
-      <div className="RegisterForm__avatars">
+      <div className='RegisterForm__avatars'>
         <Avatar
-          isActive={registerForm.genre.value === "boy"}
-          onClick={() => handleRegisterFormSelectGenre("boy")}
-          text="Homme"
-          type="boy"
+          isActive={registerForm.genre.value === 'boy'}
+          onClick={() => handleRegisterFormSelectGenre('boy')}
+          text='Homme'
+          type='boy'
         />
         <Avatar
-          isActive={registerForm.genre.value === "girl"}
-          onClick={() => handleRegisterFormSelectGenre("girl")}
-          text="Femme"
-          type="girl"
+          isActive={registerForm.genre.value === 'girl'}
+          onClick={() => handleRegisterFormSelectGenre('girl')}
+          text='Femme'
+          type='girl'
         />
       </div>
     </div>

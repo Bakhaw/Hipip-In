@@ -1,18 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 
-import ModeHeader from "../ModeHeader";
-import ItemsContainer from "../../../../components/ItemsContainer";
-import Persons from "./Persons";
+import ModeHeader from '../ModeHeader';
+import ItemsContainer from '../../../../components/ItemsContainer';
+import Persons from './Persons';
 
-import { withContext } from "../../../../context/Home";
+import { withContext } from '../../../../context/Home';
 
 function SelectPersons({
   contextActions: { handleSelectPerson },
-  contextState: { selectedPersons }
+  contextState: { selectedPersons },
 }) {
   return (
     <Fragment>
-      <ModeHeader mode="Je choisis" />
+      <ModeHeader mode='Je choisis' />
       <ItemsContainer
         items={Persons}
         handleSelectItem={handleSelectPerson}

@@ -1,47 +1,47 @@
-import React, { Component } from "react";
-import { withContext } from "../../../context/Home";
+import React, { Component } from 'react';
+import { withContext } from '../../../context/Home';
 
-const baseImgPath = "src/assets/images/activities";
+const baseImgPath = 'src/assets/images/activities';
 
 const Activities = [
   {
     image: `${baseImgPath}/air.png`,
-    text: "Prendre l'air"
+    text: "Prendre l'air",
   },
   {
     image: `${baseImgPath}/cafe.png`,
-    text: "Prendre un café"
+    text: 'Prendre un café',
   },
   {
     image: `${baseImgPath}/dej.png`,
-    text: "Pause déjeuner"
-  }
+    text: 'Pause déjeuner',
+  },
 ];
 
 function SelectActivity({
   contextActions: { handleSelectActivity },
-  contextState: { selectedActivity }
+  contextState: { selectedActivity },
 }) {
   return (
-    <div className="SelectActivity">
-      <div className="SelectActivity__Activities">
+    <div className='SelectActivity'>
+      <div className='SelectActivity__Activities'>
         {Activities.map((activity, index) => {
           const { image, text } = activity;
           const isActive = selectedActivity && selectedActivity.text === text;
           return (
             <div
               className={`SelectActivity__Activity ${
-                isActive ? "SelectActivity__Activity__active" : ""
+                isActive ? 'SelectActivity__Activity__active' : ''
               }`}
               key={index}
               onClick={() => handleSelectActivity(activity)}
             >
               <img
                 alt={`Icône ${text}`}
-                className="SelectActivity__Activity__image"
+                className='SelectActivity__Activity__image'
                 src={image}
               />
-              <p className="SelectActivity__Activity__text">{text}</p>
+              <p className='SelectActivity__Activity__text'>{text}</p>
             </div>
           );
         })}

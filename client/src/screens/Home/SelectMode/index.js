@@ -1,28 +1,28 @@
-import React from "react";
+import React from 'react';
 
-import Button from "../../../components/Button";
+import Button from '../../../components/Button';
 
-import { withContext } from "../../../context/Home";
+import { withContext } from '../../../context/Home';
 
 function SelectMode({
   contextActions: { handleSelectMode },
   goToRandomStep,
-  goToSelectPersonsStep
+  goToSelectPersonsStep,
 }) {
   async function selectRandom() {
-    await handleSelectMode("random");
+    await handleSelectMode('random');
     goToRandomStep();
   }
 
   async function selectPerson() {
-    await handleSelectMode("je choisis");
+    await handleSelectMode('je choisis');
     goToSelectPersonsStep();
   }
 
   return (
-    <div className="SelectMode">
-      <Button onClick={selectRandom} text="Random" />
-      <Button onClick={selectPerson} text="Je choisis" />
+    <div className='SelectMode'>
+      <Button onClick={selectRandom} text='Random' />
+      <Button onClick={selectPerson} text='Je choisis' />
     </div>
   );
 }

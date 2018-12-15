@@ -5,7 +5,7 @@
   "author": "Faïssal",
   "license": "MIT",
   "scripts": {
-    "prettier": "prettier --print-width 90 --single-quote true --jsx-single-quote true --trailing-comma es5 --end-of-line lf --write src/**/*.js",
+    "prettier": "prettier --print-width 90 --single-quote true --jsx-single-quote true --trailing-comma es5 --end-of-line lf --write src/**/**/**/**/**/*.js",
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development",
     "storybook": "start-storybook -p 9001 -c .storybook"
