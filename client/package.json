@@ -4,6 +4,14 @@
   "main": "index.js",
   "author": "Faïssal",
   "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
+  },
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development",
@@ -41,6 +49,8 @@
     "@storybook/addon-links": "^4.1.1",
     "@storybook/addon-notes": "^4.1.1",
     "@storybook/addons": "^4.1.1",
-    "@storybook/react": "^4.1.1"
+    "@storybook/react": "^4.1.1",
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0"
   }
 }
