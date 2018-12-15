@@ -1,7 +1,7 @@
-import React from "react";
-import RegisterDone from "./RegisterDone";
-import RegisterForm from "./RegisterForm";
-import RegisterHobbies from "./RegisterHobbies";
+import React from 'react';
+import RegisterDone from './RegisterDone';
+import RegisterForm from './RegisterForm';
+import RegisterHobbies from './RegisterHobbies';
 
 const StepsDetails = ({
   goToRegisterDone,
@@ -9,8 +9,8 @@ const StepsDetails = ({
   prevStep,
   props: {
     contextState: { canSubmit },
-    history
-  }
+    history,
+  },
 }) => [
   {
     component: <RegisterForm />,
@@ -20,11 +20,11 @@ const StepsDetails = ({
       chevronLeftDisabled: false,
       chevronLeft: true,
       chevronLeftDisabled: false,
-      chevronLeftText: "Connexion",
+      chevronLeftText: 'Connexion',
       nextStep: nextStep,
-      prevStep: () => history.replace("/login")
+      prevStep: () => history.replace('/login'),
     },
-    sectionTitle: "Infos persos"
+    sectionTitle: 'Infos persos',
   },
   {
     component: <RegisterHobbies goToRegisterDone={goToRegisterDone} />,
@@ -32,9 +32,9 @@ const StepsDetails = ({
       chevronRight: false,
       chevronLeft: true,
       nextStep: null,
-      prevStep: prevStep
+      prevStep: prevStep,
     },
-    sectionTitle: "Centres d'intérêts"
+    sectionTitle: "Centres d'intérêts",
   },
   {
     component: <RegisterDone history={history} />,
@@ -42,10 +42,10 @@ const StepsDetails = ({
       chevronRight: false,
       chevronLeft: false,
       nextStep: null,
-      prevStep: null
+      prevStep: null,
     },
-    sectionTitle: "Bievenue"
-  }
+    sectionTitle: 'Bievenue',
+  },
 ];
 
 export default StepsDetails;

@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import ChevronLeft from "./ChevronLeft";
-import ChevronRight from "./ChevronRight";
+import ChevronLeft from './ChevronLeft';
+import ChevronRight from './ChevronRight';
 
 function Footer({
   chevronLeft,
@@ -11,10 +11,10 @@ function Footer({
   chevronRightDisabled,
   chevronRightText,
   nextStep,
-  prevStep
+  prevStep,
 }) {
   return (
-    <div className="Footer">
+    <div className='Footer'>
       {chevronLeft && (
         <ChevronLeft
           disabled={chevronLeftDisabled}

@@ -1,7 +1,7 @@
-import React, { Component, createContext } from "react";
-import axios from "axios";
+import React, { Component, createContext } from 'react';
+import axios from 'axios';
 
-import RegisterFormState from "./RegisterFormState";
+import RegisterFormState from './RegisterFormState';
 
 const { Consumer, Provider } = createContext();
 
@@ -13,20 +13,20 @@ export class RegisterProvider extends Component {
   state = {
     canSubmit: false,
     registerForm: RegisterFormState,
-    selectedHobbies: []
+    selectedHobbies: [],
   };
 
   logIn = async (email, password) => {
     const params = new URLSearchParams();
-    params.append("email", email);
-    params.append("password", password);
+    params.append('email', email);
+    params.append('password', password);
 
     await axios({
       data: params,
-      method: "post",
-      url: "/auth/login"
+      method: 'post',
+      url: '/auth/login',
     })
-      .then(res => console.log("POST /login", res.data))
+      .then(res => console.log('POST /login', res.data))
       .catch(err => console.log(err));
   };
 
@@ -37,9 +37,7 @@ export class RegisterProvider extends Component {
       if (newState.selectedHobbies.length === 0) {
         newState.selectedHobbies.push(item);
       } else {
-        const itemIndex = newState.selectedHobbies.findIndex(
-          x => x.id === item.id
-        );
+        const itemIndex = newState.selectedHobbies.findIndex(x => x.id === item.id);
 
         if (itemIndex === -1) {
           newState.selectedHobbies = [...newState.selectedHobbies, item];
@@ -60,7 +58,7 @@ export class RegisterProvider extends Component {
         // ? error = null par défaut pour ne pas afficher le texte de l'input, donc on skip
         if (error === null) return;
 
-        if (error === true || value === "") {
+        if (error === true || value === '') {
           canSubmit = false;
         } else {
           canSubmit = true;
@@ -71,13 +69,13 @@ export class RegisterProvider extends Component {
     })();
 
     switch (key) {
-      case "email":
+      case 'email':
         this.checkEmailErrors();
         break;
-      case "password":
+      case 'password':
         this.checkPasswordErrors();
         break;
-      case "confirmPassword":
+      case 'confirmPassword':
         this.checkPasswordErrors();
         break;
       default:
@@ -90,7 +88,7 @@ export class RegisterProvider extends Component {
     return {
       ...this.state.registerForm[key],
       error,
-      message
+      message,
     };
   };
 
@@ -98,30 +96,30 @@ export class RegisterProvider extends Component {
     const { registerForm } = this.state;
     const { confirmPassword, password } = registerForm;
 
-    if (confirmPassword.value === "" || password.value === "") return;
+    if (confirmPassword.value === '' || password.value === '') return;
 
     let errorObj;
 
     if (confirmPassword.value !== password.value) {
       errorObj = key => ({
         error: true,
-        message: "Les mots de passe doivent correspondre",
-        key
+        message: 'Les mots de passe doivent correspondre',
+        key,
       });
     } else {
       errorObj = key => ({
         error: false,
-        message: "Mots de passe valides",
-        key
+        message: 'Mots de passe valides',
+        key,
       });
     }
 
     const newState = {
       registerForm: {
         ...registerForm,
-        confirmPassword: this.toggleFormFieldError(errorObj("confirmPassword")),
-        password: this.toggleFormFieldError(errorObj("password"))
-      }
+        confirmPassword: this.toggleFormFieldError(errorObj('confirmPassword')),
+        password: this.toggleFormFieldError(errorObj('password')),
+      },
     };
     return this.setState(newState);
   };
@@ -130,7 +128,7 @@ export class RegisterProvider extends Component {
     const { registerForm } = this.state;
     const { value } = registerForm.email;
 
-    if (value === "") return;
+    if (value === '') return;
 
     const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const isEmailValid = regex.test(String(value).toLowerCase());
@@ -142,19 +140,19 @@ export class RegisterProvider extends Component {
           ...registerForm,
           email: this.toggleFormFieldError({
             error: true,
-            message: "Email invalide",
-            key: "email"
-          })
-        }
+            message: 'Email invalide',
+            key: 'email',
+          }),
+        },
       });
 
     const params = new URLSearchParams();
-    params.append("email", value);
+    params.append('email', value);
 
     await axios({
       data: params,
-      method: "post",
-      url: "/auth/checkIfUserExists"
+      method: 'post',
+      url: '/auth/checkIfUserExists',
     })
       .then(res => {
         const { error, message } = res.data;
@@ -164,9 +162,9 @@ export class RegisterProvider extends Component {
             email: this.toggleFormFieldError({
               error,
               message,
-              key: "email"
-            })
-          }
+              key: 'email',
+            }),
+          },
         };
         return this.setState(newState);
       })
@@ -180,9 +178,9 @@ export class RegisterProvider extends Component {
         ...registerForm,
         [name]: {
           ...registerForm[name],
-          value
-        }
-      }
+          value,
+        },
+      },
     });
   };
 
@@ -193,9 +191,9 @@ export class RegisterProvider extends Component {
         ...registerForm,
         genre: {
           ...registerForm.genre,
-          value: genre
-        }
-      }
+          value: genre,
+        },
+      },
     });
   };
 
@@ -209,13 +207,13 @@ export class RegisterProvider extends Component {
             handleRegisterFormInputChange: this.handleRegisterFormInputChange,
             handleRegisterFormSelectGenre: this.handleRegisterFormSelectGenre,
             handleSelectHobbie: this.handleSelectHobbie,
-            logIn: this.logIn
+            logIn: this.logIn,
           },
           contextState: {
             canSubmit,
             registerForm,
-            selectedHobbies
-          }
+            selectedHobbies,
+          },
         }}
       >
         {this.props.children}

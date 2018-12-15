@@ -1,15 +1,15 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react';
 
-import Container from "../../components/Container";
-import Footer from "../../components/Footer";
-import StepsDetails from "./StepsDetails";
-import Spinner from "../../components/Spinner";
+import Container from '../../components/Container';
+import Footer from '../../components/Footer';
+import StepsDetails from './StepsDetails';
+import Spinner from '../../components/Spinner';
 
-import { withContext } from "../../context/Home";
+import { withContext } from '../../context/Home';
 
 class Home extends Component {
   state = {
-    currentStep: 1
+    currentStep: 1,
   };
 
   async componentDidMount() {
@@ -18,7 +18,7 @@ class Home extends Component {
       const { isAppLoading, isUserLogged } = contextState;
 
       if (!isAppLoading && !isUserLogged) {
-        return history.push("/login");
+        return history.push('/login');
       }
     });
   }
@@ -58,9 +58,7 @@ class Home extends Component {
   render() {
     const { currentStep } = this.state;
     const { isAppLoading, isUserLogged, userLogged } = this.props.contextState;
-    const { component, navigation, sectionTitle } = StepsDetails(this)[
-      currentStep
-    ];
+    const { component, navigation, sectionTitle } = StepsDetails(this)[currentStep];
 
     if (isAppLoading) return <Spinner />;
 

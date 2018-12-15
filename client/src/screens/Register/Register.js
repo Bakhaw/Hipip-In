@@ -1,14 +1,14 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react';
 
-import Container from "../../components/Container";
-import Footer from "../../components/Footer";
-import StepsDetails from "./StepsDetails";
+import Container from '../../components/Container';
+import Footer from '../../components/Footer';
+import StepsDetails from './StepsDetails';
 
-import { withContext } from "../../context/Register";
+import { withContext } from '../../context/Register';
 
 class Register extends Component {
   state = {
-    currentStep: 0
+    currentStep: 0,
   };
 
   nextStep = () => {
@@ -25,17 +25,15 @@ class Register extends Component {
 
   render() {
     const { currentStep } = this.state;
-    const { component, navigation, sectionTitle } = StepsDetails(this)[
-      currentStep
-    ];
+    const { component, navigation, sectionTitle } = StepsDetails(this)[currentStep];
     return (
       <Fragment>
         <Container
-          headerTitle="Inscription"
+          headerTitle='Inscription'
           sectionTitle={sectionTitle}
           showAvatarHeader={currentStep === 2}
         >
-          <div className="Register">{component}</div>
+          <div className='Register'>{component}</div>
         </Container>
         <Footer {...navigation} />
       </Fragment>

@@ -1,9 +1,9 @@
-import React from "react";
-import Random from "./SelectMode/Random";
-import SelectActivity from "./SelectActivity";
-import SelectHour from "./SelectHour";
-import SelectMode from "./SelectMode";
-import SelectPersons from "./SelectMode/SelectPersons";
+import React from 'react';
+import Random from './SelectMode/Random';
+import SelectActivity from './SelectActivity';
+import SelectHour from './SelectHour';
+import SelectMode from './SelectMode';
+import SelectPersons from './SelectMode/SelectPersons';
 
 const StepsDetails = ({
   goToRandomStep,
@@ -13,8 +13,8 @@ const StepsDetails = ({
   nextStep,
   prevStep,
   props: {
-    contextState: { selectedActivity, selectedMode }
-  }
+    contextState: { selectedActivity, selectedMode },
+  },
 }) => [
   {
     component: <SelectActivity />,
@@ -23,9 +23,9 @@ const StepsDetails = ({
       chevronRightDisabled: selectedActivity === null,
       chevronLeft: false,
       nextStep: nextStep,
-      prevStep: null
+      prevStep: null,
     },
-    sectionTitle: "Tu veux faire quoi ?"
+    sectionTitle: 'Tu veux faire quoi ?',
   },
   {
     component: (
@@ -38,9 +38,9 @@ const StepsDetails = ({
       chevronRight: false,
       chevronLeft: true,
       nextStep: null,
-      prevStep: prevStep
+      prevStep: prevStep,
     },
-    sectionTitle: "Avec qui ?"
+    sectionTitle: 'Avec qui ?',
   },
   {
     component: <Random />,
@@ -48,9 +48,9 @@ const StepsDetails = ({
       chevronRight: true,
       chevronLeft: true,
       nextStep: goToSelectHour,
-      prevStep: prevStep
+      prevStep: prevStep,
     },
-    sectionTitle: ""
+    sectionTitle: '',
   },
   {
     component: <SelectPersons />,
@@ -58,9 +58,9 @@ const StepsDetails = ({
       chevronRight: true,
       chevronLeft: true,
       nextStep: nextStep,
-      prevStep: goToSelectMode
+      prevStep: goToSelectMode,
     },
-    sectionTitle: ""
+    sectionTitle: '',
   },
   {
     component: <SelectHour />,
@@ -68,11 +68,10 @@ const StepsDetails = ({
       chevronRight: false,
       chevronLeft: true,
       nextStep: null,
-      prevStep:
-        selectedMode === "random" ? goToRandomStep : goToSelectPersonsStep
+      prevStep: selectedMode === 'random' ? goToRandomStep : goToSelectPersonsStep,
     },
-    sectionTitle: "Quand ?"
-  }
+    sectionTitle: 'Quand ?',
+  },
 ];
 
 export default StepsDetails;

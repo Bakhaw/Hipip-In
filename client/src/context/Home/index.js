@@ -1,5 +1,5 @@
-import React, { Component, createContext } from "react";
-import axios from "axios";
+import React, { Component, createContext } from 'react';
+import axios from 'axios';
 
 const { Consumer, Provider } = createContext();
 
@@ -14,7 +14,7 @@ export class HomeProvider extends Component {
     userLogged: {},
     selectedActivity: null,
     selectedMode: null,
-    selectedPersons: []
+    selectedPersons: [],
   };
 
   toggleAppLoading = async bool => {
@@ -22,8 +22,8 @@ export class HomeProvider extends Component {
   };
 
   getUser = async () => {
-    console.log("GET /auth/profile");
-    const request = await axios.get("/auth/profile");
+    console.log('GET /auth/profile');
+    const request = await axios.get('/auth/profile');
     const userLogged = request.data.user;
     const isUserLogged = userLogged === null ? false : true;
     this.setState({ isUserLogged, userLogged });
@@ -49,10 +49,7 @@ export class HomeProvider extends Component {
         );
 
         if (itemIndex === -1) {
-          newState.selectedPersons = [
-            ...newState.selectedPersons,
-            selectedPerson
-          ];
+          newState.selectedPersons = [...newState.selectedPersons, selectedPerson];
         } else {
           newState.selectedPersons.splice(itemIndex, 1);
         }
@@ -68,7 +65,7 @@ export class HomeProvider extends Component {
       userLogged,
       selectedActivity,
       selectedMode,
-      selectedPersons
+      selectedPersons,
     } = this.state;
     return (
       <Provider
@@ -78,7 +75,7 @@ export class HomeProvider extends Component {
             handleSelectMode: this.handleSelectMode,
             handleSelectPerson: this.handleSelectPerson,
             getUser: this.getUser,
-            toggleAppLoading: this.toggleAppLoading
+            toggleAppLoading: this.toggleAppLoading,
           },
           contextState: {
             isAppLoading,
@@ -86,8 +83,8 @@ export class HomeProvider extends Component {
             userLogged,
             selectedActivity,
             selectedMode,
-            selectedPersons
-          }
+            selectedPersons,
+          },
         }}
       >
         {this.props.children}

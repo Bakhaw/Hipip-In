@@ -10,11 +10,7 @@ function Header({ showAvatarHeader, title, type }) {
     return (
       <div className='AvatarHeader'>
         <Link to='/'>
-          <img
-            alt='Hipip In Logo'
-            className='AvatarHeader__logo'
-            src={LogoShort}
-          />
+          <img alt='Hipip In Logo' className='AvatarHeader__logo' src={LogoShort} />
         </Link>
         <Avatar isActive={true} size='small' type={type} />
       </div>

@@ -1,5 +1,5 @@
-import React, { Component, createContext } from "react";
-import axios from "axios";
+import React, { Component, createContext } from 'react';
+import axios from 'axios';
 
 const { Consumer, Provider } = createContext();
 
@@ -11,12 +11,12 @@ export class AppStateProvider extends Component {
   state = {
     isAppLoading: false,
     isUserLogged: false,
-    userLogged: {}
+    userLogged: {},
   };
 
   getUser = async () => {
-    console.log("GET /auth/profile");
-    const request = await axios.get("/auth/profile");
+    console.log('GET /auth/profile');
+    const request = await axios.get('/auth/profile');
     const userLogged = request.data.user;
     const isUserLogged = userLogged === null ? false : true;
     this.setState({ isUserLogged, userLogged });
@@ -34,13 +34,13 @@ export class AppStateProvider extends Component {
           contextActions: {
             getUser: this.getUser,
             logIn: this.logIn,
-            toggleAppLoading: this.toggleAppLoading
+            toggleAppLoading: this.toggleAppLoading,
           },
           contextState: {
             isAppLoading,
             isUserLogged,
-            userLogged
-          }
+            userLogged,
+          },
         }}
       >
         {this.props.children}

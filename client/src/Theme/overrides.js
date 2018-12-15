@@ -1,5 +1,5 @@
-import { MuiFab } from "./components/MuiFab";
+import { MuiFab } from './components/MuiFab';
 
 export const overrides = {
-  MuiFab
+  MuiFab,
 };
