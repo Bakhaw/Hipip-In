@@ -29,9 +29,12 @@
       flex-direction: column;
     }
     .Input__row__input {
+      &::-webkit-input-placeholder {
+        color: $Placeholder__color;
+      }
       width: $Layout__width__XLG;
-      padding: 5px 10px;
-      border-radius: 3px;
+      padding: 8px 10px;
+      border-radius: 5px;
       border: none;
       background: #fff;
       color: $DarkGrey;

@@ -1,9 +1,18 @@
 import React from 'react';
 import classNames from 'classnames';
-
 import InputValidator from './InputValidator';
 
-function Input({ error, message, label, name, onBlur, onChange, type, value }) {
+function Input({
+  error,
+  message,
+  label,
+  name,
+  onBlur,
+  placeholder,
+  onChange,
+  type,
+  value,
+}) {
   return (
     <div
       className={classNames(
@@ -22,6 +31,7 @@ function Input({ error, message, label, name, onBlur, onChange, type, value }) {
           name={name}
           onBlur={onBlur}
           onChange={onChange}
+          placeholder={placeholder}
           type={type}
           value={value}
         />
