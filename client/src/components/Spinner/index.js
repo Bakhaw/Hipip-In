@@ -1,16 +1,24 @@
 import React from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { withStyles } from '@material-ui/core/styles';
 
-function Spinner() {
+const styles = () => ({
+  spinner: {
+    color: '#aa90c6',
+    animationDuration: '550ms',
+  },
+});
+
+function Spinner({ classes }) {
   return (
-    <div className='Spinner'>
-      <div className='lds-css ng-scope'>
-        <div style={{ width: '100%', height: '100%' }} className='lds-ripple'>
-          <div />
-          <div />
-        </div>
-      </div>
-    </div>
+    <CircularProgress
+      variant='indeterminate'
+      disableShrink
+      className={classes.spinner}
+      size={24}
+      thickness={4}
+    />
   );
 }
 
-export default Spinner;
+export default withStyles(styles)(Spinner);
