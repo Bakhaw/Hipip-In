@@ -9,7 +9,7 @@ import { withContext } from '../../context/Home';
 
 class Home extends Component {
   state = {
-    currentStep: 1,
+    currentStep: 0,
   };
 
   async componentDidMount() {

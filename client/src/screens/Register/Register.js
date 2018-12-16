@@ -8,7 +8,7 @@ import { withContext } from '../../context/Register';
 
 class Register extends Component {
   state = {
-    currentStep: 1,
+    currentStep: 0,
   };
 
   nextStep = () => {

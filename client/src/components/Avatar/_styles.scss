@@ -35,6 +35,14 @@
   .Avatar__small {
     height: 90px;
     width: 90px;
+    @include xs {
+      height: 70px;
+      width: 70px;
+    }
+    @include sm {
+      height: 70px;
+      width: 70px;
+    }
   }
 }
 

@@ -18,12 +18,26 @@
       .SelectActivity__Activity__image {
         border: 10px solid transparent;
         width: 80px;
+        @include xs {
+          width: 70px;
+        }
+        @include sm {
+          width: 70px;
+        }
       }
       .SelectActivity__Activity__text {
         color: $DarkGrey;
         font-size: 25px;
         margin-left: 15px;
         width: 50%;
+        @include xs {
+          font-size: 20px;
+          margin-left: 10px;
+        }
+        @include sm {
+          font-size: 22px;
+          margin-left: 10px;
+        }
       }
     }
     .SelectActivity__Activity__active {

@@ -13,7 +13,7 @@ const StepsDetails = ({
   nextStep,
   prevStep,
   props: {
-    contextState: { selectedActivity, selectedMode },
+    contextState: { selectedActivity, selectedPersons, selectedMode },
   },
 }) => [
   {
@@ -56,6 +56,7 @@ const StepsDetails = ({
     component: <SelectPersons />,
     navigation: {
       chevronRight: true,
+      chevronRightDisabled: selectedPersons.length === 0,
       chevronLeft: true,
       nextStep: nextStep,
       prevStep: goToSelectMode,

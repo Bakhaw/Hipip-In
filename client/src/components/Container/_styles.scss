@@ -10,6 +10,12 @@
     font-family: $Pacifico;
     font-weight: normal;
     text-align: center;
+    @include xs {
+      font-size: 35px;
+    }
+    @include sm {
+      font-size: 38px;
+    }
   }
   .Container__children {
     min-height: $Container__children__min-height;

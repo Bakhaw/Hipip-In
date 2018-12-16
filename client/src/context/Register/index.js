@@ -37,7 +37,7 @@ export class RegisterProvider extends Component {
       if (newState.selectedHobbies.length === 0) {
         newState.selectedHobbies.push(item);
       } else {
-        const itemIndex = newState.selectedHobbies.findIndex(x => x.id === item.id);
+        const itemIndex = newState.selectedHobbies.findIndex(x => x._id === item._id);
 
         if (itemIndex === -1) {
           newState.selectedHobbies = [...newState.selectedHobbies, item];

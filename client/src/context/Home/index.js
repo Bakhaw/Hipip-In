@@ -45,7 +45,7 @@ export class HomeProvider extends Component {
         newState.selectedPersons.push(selectedPerson);
       } else {
         const itemIndex = newState.selectedPersons.findIndex(
-          x => x.id === selectedPerson.id
+          x => x._id === selectedPerson._id
         );
 
         if (itemIndex === -1) {
