@@ -4,6 +4,13 @@ import classNames from 'classnames';
 import Spinner from '../Spinner';
 
 function ItemsContainer({ handleSelectItem, isLoading, items, selectedItems }) {
+  if (isLoading)
+    return (
+      <div className='ItemsContainer__Spinner'>
+        <Spinner />
+      </div>
+    );
+
   return (
     <div className='ItemsContainer'>
       {items.map((item, index) => {

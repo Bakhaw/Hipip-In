@@ -1,3 +1,13 @@
+.ItemsContainer__Spinner {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 0.5rem;
+}
+
 .ItemsContainer {
   border-radius: 0.5rem;
   display: grid;
