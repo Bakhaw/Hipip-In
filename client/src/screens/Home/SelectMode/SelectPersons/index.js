@@ -16,21 +16,15 @@ class SelectPersons extends Component {
     const { toggleAppLoading } = this.props.contextActions;
     await toggleAppLoading(true);
     await this.getAllUsers();
-    // await toggleAppLoading(false);
+    await toggleAppLoading(false);
   }
 
   getAllUsers = async () => {
-    // console.log('get all users');
     const { email } = this.props.contextState.userLogged;
     const request = await axios.get(`/users/${email}`);
     const allUsers = await request.data;
     this.setState({ allUsers });
   };
-
-  async componentWillUnmount() {
-    console.log('will unmount');
-    // await this.props.contextActions.toggleAppLoading(false);
-  }
 
   render() {
     const { allUsers } = this.state;

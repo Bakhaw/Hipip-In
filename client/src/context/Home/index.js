@@ -18,7 +18,6 @@ export class HomeProvider extends Component {
   };
 
   toggleAppLoading = async bool => {
-    console.log('toggleAppLoading', bool);
     this.setState({ isAppLoading: bool });
   };
 

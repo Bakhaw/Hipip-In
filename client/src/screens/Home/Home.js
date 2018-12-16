@@ -57,10 +57,8 @@ class Home extends Component {
 
   render() {
     const { currentStep } = this.state;
-    const { isAppLoading, isUserLogged, userLogged } = this.props.contextState;
+    const { isUserLogged, userLogged } = this.props.contextState;
     const { component, navigation, sectionTitle } = StepsDetails(this)[currentStep];
-
-    if (isAppLoading) return <Spinner />;
 
     return (
       <Fragment>
