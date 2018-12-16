@@ -45,7 +45,11 @@ function RegisterHobbies({
         handleSelectItem={handleSelectHobbie}
         selectedItems={selectedHobbies}
       />
-      <Button onClick={submitRegister} text='Confirmer mon inscription' />
+      <Button
+        disabled={selectedHobbies.length === 0}
+        onClick={submitRegister}
+        text='Confirmer mon inscription'
+      />
     </div>
   );
 }

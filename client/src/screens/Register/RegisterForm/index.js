@@ -15,7 +15,7 @@ function RegisterForm({ contextActions, contextState: { registerForm } }) {
   return (
     <div className='RegisterForm'>
       {RegisterFormFields.map((field, index) => {
-        const { label, name, type } = field;
+        const { label, name, placeholder, type } = field;
         const { error, message, value } = registerForm[name];
         return (
           <Input
@@ -26,6 +26,7 @@ function RegisterForm({ contextActions, contextState: { registerForm } }) {
             name={name}
             onBlur={() => checkFormErrors(name)} // TODO
             onChange={handleRegisterFormInputChange}
+            placeholder={placeholder}
             type={type}
             value={value}
           />
