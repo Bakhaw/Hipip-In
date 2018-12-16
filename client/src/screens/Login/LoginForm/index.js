@@ -107,11 +107,9 @@ class LoginForm extends Component {
   };
 
   render() {
-    const { email, errorMessage, formError, password } = this.state;
+    const { email, password } = this.state;
     const { isAppLoading } = this.props.contextState;
     const isButtonDisabled = email.value === '' || password.value === '';
-
-    if (isAppLoading) return <Spinner />;
 
     return (
       <div className='LoginForm'>
@@ -134,7 +132,12 @@ class LoginForm extends Component {
             );
           })}
         </div>
-        <Button disabled={isButtonDisabled} onClick={this.logIn} text='Se connecter' />
+        <Button
+          disabled={isButtonDisabled}
+          isLoading={isAppLoading}
+          onClick={this.logIn}
+          text='Se connecter'
+        />
       </div>
     );
   }
