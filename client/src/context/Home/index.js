@@ -18,7 +18,8 @@ export class HomeProvider extends Component {
   };
 
   toggleAppLoading = async bool => {
-    await this.setState({ isAppLoading: bool });
+    console.log('toggleAppLoading', bool);
+    this.setState({ isAppLoading: bool });
   };
 
   getUser = async () => {

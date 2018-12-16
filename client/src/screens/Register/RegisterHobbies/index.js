@@ -16,11 +16,13 @@ function RegisterHobbies({
     const { lastname, firstname, email, password, genre } = registerForm;
     const params = new URLSearchParams();
 
+    params.append('displayText', `${firstname.value} ${lastname.value}`);
     params.append('lastname', lastname.value);
     params.append('firstname', firstname.value);
     params.append('email', email.value);
     params.append('password', password.value);
-    params.append('genre', genre);
+    params.append('genre', genre.value);
+    params.append('image', `src/assets/images/users/${genre.value}.png`);
     params.append('hobbies', JSON.stringify(selectedHobbies));
 
     await axios({

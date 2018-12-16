@@ -1,21 +1,28 @@
 import React from 'react';
+import classNames from 'classnames';
 
-function ItemsContainer({ handleSelectItem, selectedItems, items }) {
+import Spinner from '../Spinner';
+
+function ItemsContainer({ handleSelectItem, isLoading, items, selectedItems }) {
   return (
     <div className='ItemsContainer'>
       {items.map((item, index) => {
-        const { id, image, text } = item;
-        const selectedItemsIds = selectedItems.map(item => item.id);
-        let isItemActive = selectedItemsIds.includes(id);
+        const { _id, displayText, image } = item;
+        const selectedItemsIds = selectedItems.map(item => item._id);
+        let isItemActive = selectedItemsIds.includes(_id);
         return (
-          <div className={`Item ${isItemActive ? 'Item__active' : null}`} key={index}>
+          <div
+            className={classNames('Item', isItemActive && 'Item__active')}
+            key={index}
+            role='button'
+          >
             <img
-              alt={`image ${text}`}
+              alt={`image ${displayText}`}
               className='Item__image'
               onClick={() => handleSelectItem(item)}
               src={image}
             />
-            <p className='Item__text'>{text}</p>
+            <p className='Item__text'>{displayText}</p>
           </div>
         );
       })}

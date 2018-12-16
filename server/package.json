@@ -4,14 +4,8 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "precommit": "lint-staged",
+    "prettier": "prettier --print-width 90 --single-quote true --jsx-single-quote true --trailing-comma es5 --end-of-line lf --write ../server/**/*.js",
     "dev": "nodemon --ignore client/ --exec babel-node --presets env server.js"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "dependencies": {
     "babel-eslint": "^10.0.1",
@@ -29,12 +23,12 @@
     "lint-staged": "^8.1.0",
     "mongoose": "^5.0.11",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "prettier": "^1.15.3"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "nodemon": "^1.17.2"
+    "nodemon": "^1.17.2",
+    "prettier": "^1.15.3"
   }
 }

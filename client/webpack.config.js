@@ -1,5 +1,5 @@
-const path = require("path");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   module: {
@@ -8,59 +8,59 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader",
-            options: { minimize: true }
-          }
-        ]
+            loader: 'html-loader',
+            options: { minimize: true },
+          },
+        ],
       },
       {
         test: /\.scss$/,
         use: [
           {
-            loader: "style-loader" // creates style nodes from JS strings
+            loader: 'style-loader', // creates style nodes from JS strings
           },
           {
-            loader: "css-loader" // translates CSS into CommonJS
+            loader: 'css-loader', // translates CSS into CommonJS
           },
           {
-            loader: "sass-loader" // compiles Sass to CSS
-          }
-        ]
+            loader: 'sass-loader', // compiles Sass to CSS
+          },
+        ],
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
-          "file-loader",
+          'file-loader',
           {
-            loader: "image-webpack-loader",
+            loader: 'image-webpack-loader',
             options: {
-              bypassOnDebug: true
-            }
-          }
-        ]
-      }
-    ]
+              bypassOnDebug: true,
+            },
+          },
+        ],
+      },
+    ],
   },
   devServer: {
     historyApiFallback: true,
     proxy: [
       {
-        path: ["/auth"],
-        target: "http://localhost:8090"
-      }
-    ]
+        path: ['/auth', '/users'],
+        target: 'http://localhost:8090',
+      },
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./public/index.html",
-      filename: "./index.html"
-    })
-  ]
+      template: './public/index.html',
+      filename: './index.html',
+    }),
+  ],
 };

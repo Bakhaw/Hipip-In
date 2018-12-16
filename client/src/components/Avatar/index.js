@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Boy from '../../assets/images/layout/boy.png';
-import Girl from '../../assets/images/layout/girl.png';
+import Boy from '../../assets/images/users/boy.png';
+import Girl from '../../assets/images/users/girl.png';
 
 // TODO make Avatar selectable when user hit "Enter"
 function Avatar({ isActive, onClick, size, text, type }) {

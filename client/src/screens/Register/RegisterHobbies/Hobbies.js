@@ -2,55 +2,54 @@ const baseImgPath = 'src/assets/images/hobbies';
 
 const Hobbies = [
   {
-    id: 0,
+    _id: 0,
+    displayText: 'Bricolage',
     image: `${baseImgPath}/bricolage.png`,
-    text: 'Bricolage',
   },
   {
-    id: 1,
+    _id: 1,
+    displayText: 'Cinéma',
     image: `${baseImgPath}/cinema.png`,
-    text: 'Cinéma',
   },
   {
-    id: 2,
-
+    _id: 2,
+    displayText: 'Cuisine',
     image: `${baseImgPath}/cuisine.png`,
-    text: 'Cuisine',
   },
   {
-    id: 3,
+    _id: 3,
+    displayText: 'Lecture',
     image: `${baseImgPath}/lecture.png`,
-    text: 'Lecture',
   },
   {
-    id: 4,
+    _id: 4,
+    displayText: 'Sport',
     image: `${baseImgPath}/sport.png`,
-    text: 'Sport',
   },
   {
-    id: 5,
+    _id: 5,
+    displayText: 'Cuisine',
     image: `${baseImgPath}/cuisine.png`,
-    text: 'Cuisine',
   },
   {
-    id: 6,
+    _id: 6,
+    displayText: 'Lecture',
     image: `${baseImgPath}/lecture.png`,
-    text: 'Lecture',
   },
   {
-    id: 7,
+    _id: 7,
+    displayText: 'Sport',
     image: `${baseImgPath}/sport.png`,
-    text: 'Sport',
   },
   {
-    id: 8,
+    _id: 8,
+    displayText: 'Voyages',
     image: `${baseImgPath}/voyages.png`,
-    text: 'Voyages',
   },
   {
-    id: 9,
+    _id: 9,
+    displayText: 'Voyages',
     image: `${baseImgPath}/voyages.png`,
-    text: 'Voyages',
   },
 ];
 
