@@ -28,26 +28,6 @@ const Hobbies = [
   },
   {
     _id: 5,
-    displayText: 'Cuisine',
-    image: `${baseImgPath}/cuisine.png`,
-  },
-  {
-    _id: 6,
-    displayText: 'Lecture',
-    image: `${baseImgPath}/lecture.png`,
-  },
-  {
-    _id: 7,
-    displayText: 'Sport',
-    image: `${baseImgPath}/sport.png`,
-  },
-  {
-    _id: 8,
-    displayText: 'Voyages',
-    image: `${baseImgPath}/voyages.png`,
-  },
-  {
-    _id: 9,
     displayText: 'Voyages',
     image: `${baseImgPath}/voyages.png`,
   },
